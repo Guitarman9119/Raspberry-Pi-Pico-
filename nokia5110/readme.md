@@ -24,5 +24,5 @@ physical pins indicated (physical pin on pico)
 
 - Gnd:                             Pico GND (38)
 
-![schematic](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/edit/main/nokia5110/schematic.png)
+![schematic](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/blob/main/nokia5110/schematic.png)
 
