@@ -58,7 +58,7 @@ Now we can initialize our I2C communication and LCD setting it equal to the vari
  
  Now setup the Real-Time Clock by initializing it with the ds1302 library and we will set it equal to the variable ds.
  
-		ds = ds1302.DS1302(Pin(18),Pin(17),Pin(16))
+	ds = ds1302.DS1302(Pin(18),Pin(17),Pin(16))
 
 To set the time you need to change the following code with the correct information. After uploading the program comment out this line.
 
@@ -68,7 +68,7 @@ We can now create an endless loop to write the year, month, day, hour, minute an
 
 	while True:
 		lcd.clear()
-		lcd.putstr(str(ds.year()) + "/" +  str(ds.month()) + "/" + str(ds.day()) + " " + str(ds.hour()) + ":" + 		str(ds.minute()) + ":" + str(ds.second()))
+		lcd.putstr(str(ds.year()) + "/" +  str(ds.month()) + "/" + str(ds.day()) + " " + str(ds.hour()) + ":" + str(ds.minute()) + ":" + str(ds.second()))
 		utime.sleep(1)
 
 Feel free to contribute to this code or repository to make it more efficient.
