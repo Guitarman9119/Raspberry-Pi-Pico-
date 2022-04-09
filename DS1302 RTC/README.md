@@ -1,6 +1,6 @@
 # DS1302 +  16x2 Character LCD 
 
-Youtube link: 
+Youtube link: https://youtu.be/5jylVizMTa8
 
 This tutorial we will take a look at the **DS1302** real-time clock module. We will connect it to the Raspberry Pi Pico to display the date and time on the popular **16x2 Character LCD with I2C**.
 
@@ -64,11 +64,31 @@ To set the time you need to change the following code with the correct informati
 
 	ds.date_time([2023, 3, 2, 0, 8, 17, 50, 0]) # set datetime.
 
-We can now create an endless loop to write the year, month, day, hour, minute and second to our screen. We clear the LCD, put information with the **putstr** function and wait 1 seconds before we clear the screen and write the new date.
+We can now create an endless loop to write the year, month, day, hour, minute and second to our screen. We first format the date with the following code. 
 
 	while True:
-		lcd.clear()
-		lcd.putstr(str(ds.year()) + "/" +  str(ds.month()) + "/" + str(ds.day()) + " " + str(ds.hour()) + ":" + str(ds.minute()) + ":" + str(ds.second()))
-		utime.sleep(1)
+   		(Y,M,D,day,hr,m,s)=ds.date_time()
+    	if s < 10:
+            s = "0" + str(s)
+        if m < 10:
+            m = "0" + str(m)
+        if hr < 10:
+            hr = "0" + str(hr)
+        if D < 10:
+            D = "0" + str(D)
+        if M < 10:
+            M = "0" + str(M)
 
+Last step is to display the time and date on the LCD, using the LCD library we can move the cursor to any starting position
+on our LCD and put information with the **putstr** function.
+
+    lcd.move_to(0,0)
+    lcd.putstr("Time:")
+    lcd.move_to(6,0)
+    lcd.putstr(str(hr) + ":" + str(m) + ":" + str(s))
+    lcd.move_to(0,1)
+    lcd.putstr("Date:")
+    lcd.move_to(6,1)
+    lcd.putstr(str(D) + "/" + str(M) + "/" + str(Y))
+    
 Feel free to contribute to this code or repository to make it more efficient.
