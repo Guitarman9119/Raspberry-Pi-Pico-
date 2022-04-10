@@ -15,4 +15,4 @@ To follow along with this tutorial, you will need the following components:
 ## Schematic Diagram
 Build your circuit according to the following schematic:
 
-![My Image](images/schematic.png)
+![Schematic Diagram](image/schematic.png)
