@@ -3,27 +3,18 @@ from ssd1306 import SSD1306_I2C
 import framebuf
 import time
 
-WIDTH = 128
-HEIGHT = 64
-
-images = []
-
 i2c = I2C(0, scl = Pin(17), sda = Pin(16), freq=400000)
-
-display = SSD1306_I2C(128, 64, i2c)
-
-# display.invert(1)
-#display.contrast(100)
+display = SSD1306_I2C(WIDTH, HEIGHT, i2c)
 
 
 images = []
-for n in range(1,28):
-    with open('/youtube/image%s.pbm' % n, 'rb') as f:
+for n in range(1, x):
+    with open('/folder/image%s.pbm' % n, 'rb') as f:
         f.readline() # Magic number
         f.readline() # Creator comment
         f.readline() # Dimensions
         data = bytearray(f.read())
-    fbuf = framebuf.FrameBuffer(data, 64, 64, framebuf.MONO_HLSB)
+    fbuf = framebuf.FrameBuffer(data, 128, 64, framebuf.MONO_HLSB)
     images.append(fbuf)
     
 
