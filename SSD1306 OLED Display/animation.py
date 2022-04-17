@@ -17,7 +17,7 @@ for n in range(1, x):
         f.readline() # Creator comment
         f.readline() # Dimensions
         data = bytearray(f.read())
-    fbuf = framebuf.FrameBuffer(data, 128, 64, framebuf.MONO_HLSB) #adjust accordingly the width and height
+    fbuf = framebuf.FrameBuffer(data, 64, 64, framebuf.MONO_HLSB) #adjust accordingly the width and height
     images.append(fbuf)
     
 
