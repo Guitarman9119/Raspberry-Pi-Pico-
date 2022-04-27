@@ -2,8 +2,8 @@ from machine import Pin
 import utime
 
 
-DT_Pin = Pin(0, Pin.IN, Pin.PULL_UP)
-CLK_Pin = Pin(1, Pin.IN, Pin.PULL_UP)
+DT_Pin = Pin(1, Pin.IN, Pin.PULL_UP)
+CLK_Pin = Pin(0, Pin.IN, Pin.PULL_UP)
 SW = Pin(2, Pin.IN, Pin.PULL_UP)
 
 LEDs = [3,4,5,6,7,8]
