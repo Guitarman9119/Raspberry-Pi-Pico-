@@ -1,10 +1,10 @@
-#Library used:
+## Library used:
 
 PCF8574 LCD library: https://github.com/dhalbert/CircuitPython_LCD
 To install, clone the repo or download it, then copy the lcd/ folder to the lib/ folder on the CIRCUITPY device. I have included a copy of the library
 in this repository to ensure correct version control to follow along with the video.
 
-# Related CircuitPython module documentation:
+## Related CircuitPython module documentation:
 
 board  https://circuitpython.readthedocs.io/en/latest/shared-bindings/board/index.html
 
