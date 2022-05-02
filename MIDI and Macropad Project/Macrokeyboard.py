@@ -34,7 +34,7 @@ keyboard = Keyboard(usb_hid.devices)
 write_text = KeyboardLayoutUS(keyboard)
 
 # These are the corresponding GPIOs on the Pi Pico that is used for the Keys on the PCB
-buttons = [board.GP0, board.GP1,board.GP2,board.GP3,board.GP4,board.GP5,board.GP6,board.GP7,board.GP8,board.GP9,board.GP10,board.GP11,board.GP12,board.GP13,board.GP14,board.GP15]
+buttons = [board.GP0, board.GP1,board.GP2,board.GP3,board.GP4,board.GP5,board.GP6,board.GP7,board.GP8,board.GP9,board.GP10,board.GP11,board.GP12,board.GP13,board.GP14,board.GP16]
 key = [digitalio.DigitalInOut(pin_name) for pin_name in buttons]
 for x in range(0,len(buttons)):
     key[x].direction = digitalio.Direction.INPUT
@@ -45,74 +45,81 @@ for x in range(0,len(buttons)):
 while True:
     
     if key[0].value:
-        cc.send(ConsumerControlCode.VOLUME_DECREMENT)
+        keyboard.send(Keycode.ZERO)
         time.sleep(0.1)
+        print("Test")
         
     if key[1].value:
-        cc.send(ConsumerControlCode.PLAY_PAUSE)
+        keyboard.send(Keycode.ONE)
         time.sleep(0.1)
         
     if key[2].value:
-        keyboard.send(Keycode.GUI)
-        time.sleep(0.3)
-        write_text.write('Brave\n')
-        time.sleep(1)
-        write_text.write('https://www.youtube.com/watch?v=l7SwiFWOQqM\n')
+        keyboard.send(Keycode.TWO)
+        time.sleep(0.1)
+        
         
     if key[3].value:
-        cc.send(ConsumerControlCode.VOLUME_INCREMENT)
+        keyboard.send(Keycode.THREE)
         time.sleep(0.1)
         
     if key[4].value:
-        print("test")
-        keyboard.send(Keycode.ONE)
+        keyboard.send(Keycode.FOUR)
         time.sleep(0.1)
         
     if key[5].value:
-        keyboard.send(Keycode.GUI)
-        time.sleep(0.3)
-        write_text.write('Thonny\n')
+        keyboard.send(Keycode.FIVE)
+        time.sleep(0.1)
         
     if key[6].value:
-        cc.send(ConsumerControlCode.MUTE)
+        keyboard.send(Keycode.SIX)
         time.sleep(0.1)
         
     if key[7].value:
-        keyboard.send(Keycode.P)
+        keyboard.send(Keycode.SEVEN)
         time.sleep(0.1)
         
     if key[8].value:
-        write_text.write("I am text from the Pico Macro Keyboard")
+        keyboard.send(Keycode.EIGHT)
         time.sleep(0.1)
         
     if key[9].value:
-        keyboard.send(Keycode.ONE)
+        keyboard.send(Keycode.NINE)
         time.sleep(0.1)
         
     if key[10].value:
-        keyboard.send(Keycode.GUI)
-        time.sleep(0.3)
-        write_text.write('Brave\n')
-        time.sleep(1)
-        write_text.write('https://www.youtube.com/channel/UCxxs1zIA4cDEBZAHIJ80NVg\n')
+        keyboard.send(Keycode.ONE)
+        time.sleep(0.1)
+        keyboard.send(Keycode.ZERO)
+        time.sleep(0.1)
         
     if key[11].value:
-        keyboard.send(Keycode.THREE)
+        keyboard.send(Keycode.ONE)
+        time.sleep(0.1)
+        keyboard.send(Keycode.ONE)
         time.sleep(0.1)
         
     if key[12].value:
-        keyboard.send(Keycode.THREE)
-        time.sleep(0.1)        
+        keyboard.send(Keycode.ONE)
+        time.sleep(0.1)
+        keyboard.send(Keycode.TWO)
+        time.sleep(0.1)       
 
     if key[13].value:
+        keyboard.send(Keycode.ONE)
+        time.sleep(0.1)
         keyboard.send(Keycode.THREE)
         time.sleep(0.1)
 
     if key[14].value:
-        keyboard.send(Keycode.THREE)
+        keyboard.send(Keycode.ONE)
+        time.sleep(0.1)
+        keyboard.send(Keycode.FOUR)
         time.sleep(0.1)
 
     if key[15].value:
-        keyboard.send(Keycode.NINE)
+        keyboard.send(Keycode.ONE)
         time.sleep(0.1)
+        keyboard.send(Keycode.FIVE)
+        time.sleep(0.1)
+        
     time.sleep(0.1)
