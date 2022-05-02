@@ -1,17 +1,16 @@
 # This code is adapted from Liz Clark - MIDIFIGHTER project for Adafruit Industries - 
 # https://learn.adafruit.com/raspberry-pi-pico-led-arcade-button-midi-controller-fighter
 
-
 import time
 import board
 import terminalio
 import busio
 import digitalio
-
 import usb_midi
 import adafruit_midi
-from adafruit_midi.note_on  import NoteOn
-from adafruit_midi.note_off import NoteOff
+from adafruit_midi.note_on          import NoteOn
+from adafruit_midi.note_off         import NoteOff
+
 
 #  MIDI setup as MIDI out device
 midi = adafruit_midi.MIDI(midi_out=usb_midi.ports[1], out_channel=0)
@@ -54,7 +53,8 @@ note_states = [note0_pressed, note1_pressed, note2_pressed, note3_pressed,
 
 
 #  array of default MIDI notes
-midi_notes = [60, 67, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]
+midi_notes = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]
+
 
 while True:
 
@@ -62,19 +62,17 @@ while True:
     for i in range(16):
         buttons = note_buttons[i]
         #  if button is pressed...
-        if not buttons.value and note_states[i] is True:
+        if buttons.value and note_states[i] is True:
             #  send the MIDI note and light up the LED
             midi.send(NoteOn(midi_notes[i], 120))
             note_states[i] = False
+            print(midi_notes[i])
             
         #  if the button is released...
-        if buttons.value and note_states[i] is False:
+        if not buttons.value and note_states[i] is False:
             #  stop sending the MIDI note and turn off the LED
             midi.send(NoteOff(midi_notes[i], 120))
             note_states[i] = True
-            print("press")
-            print(midi_notes[i])
-
    
 
         
