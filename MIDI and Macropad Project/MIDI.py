@@ -5,27 +5,16 @@
 import time
 import board
 import terminalio
-
 import busio
-
 import digitalio
 
 import usb_midi
 import adafruit_midi
-from adafruit_midi.note_on          import NoteOn
-from adafruit_midi.note_off         import NoteOff
-
+from adafruit_midi.note_on  import NoteOn
+from adafruit_midi.note_off import NoteOff
 
 #  MIDI setup as MIDI out device
 midi = adafruit_midi.MIDI(midi_out=usb_midi.ports[1], out_channel=0)
-
-
-
-
-
-
-
-
 
 note_pins = [board.GP0, board.GP1,board.GP2,board.GP3,board.GP4,board.GP5,board.GP6,
              board.GP7,board.GP8,board.GP9,board.GP10,board.GP11,board.GP12,board.GP13,
@@ -56,6 +45,7 @@ note12_pressed = False
 note13_pressed = False
 note14_pressed = False
 note15_pressed = False
+
 #  array of note states
 note_states = [note0_pressed, note1_pressed, note2_pressed, note3_pressed,
                note4_pressed, note5_pressed, note6_pressed, note7_pressed,
@@ -66,10 +56,7 @@ note_states = [note0_pressed, note1_pressed, note2_pressed, note3_pressed,
 #  array of default MIDI notes
 midi_notes = [60, 67, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]
 
-
-
 while True:
-
 
     #  MIDI input
     for i in range(16):
