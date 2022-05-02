@@ -1,6 +1,6 @@
-# SPDX-FileCopyrightText: 2021 Liz Clark for Adafruit Industries
-#
-# SPDX-License-Identifier: MIT
+# This code is adapted from Liz Clark - MIDIFIGHTER project for Adafruit Industries - 
+# https://learn.adafruit.com/raspberry-pi-pico-led-arcade-button-midi-controller-fighter
+
 
 import time
 import board
