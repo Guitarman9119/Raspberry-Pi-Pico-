@@ -62,7 +62,7 @@ Now we can initialize our I2C communication and LCD setting it equal to the vari
 
 To set the time you need to change the following code with the correct information. After uploading the program comment out this line.
 
-	ds.date_time([2023, 3, 2, 0, 8, 17, 50, 0]) # set datetime.
+	ds.date_time([2023, 3, 2, 0, 8, 17, 50]) # set datetime.
 
 We can now create an endless loop to write the year, month, day, hour, minute and second to our screen. We first format the date with the following code. 
 
