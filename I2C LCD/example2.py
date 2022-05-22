@@ -1,5 +1,5 @@
 import utime
-import ds1302
+#import ds1302
 from machine import I2C, Pin
 from lcd_api import LcdApi
 from pico_i2c_lcd import I2cLcd
