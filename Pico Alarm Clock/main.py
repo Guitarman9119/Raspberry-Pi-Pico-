@@ -25,6 +25,7 @@ Buttons - User interface
 from machine import I2C, Pin
 from ds1302 import DS1302
 from pico_i2c_lcd import I2cLcd
+from neopixel import Neopixel
 import utime
 ###################################################################
 
@@ -53,11 +54,54 @@ buzzer = Pin(14, Pin.OUT)
 buzzer.high()
 ######################################################################
 
+#################neopixel#############################################
+numpix = 10
+strip = Neopixel(numpix, 0, 2, "GRB")
+
+red = (255, 0, 0)
+orange = (255, 50, 0)
+yellow = (255, 100, 0)
+green = (0, 255, 0)
+blue = (0, 0, 255)
+indigo = (100, 0, 90)
+violet = (200, 0, 100)
+colors_rgb = [red, orange, yellow, green, blue, indigo, violet]
+
+# same colors as normaln rgb, just 0 added at the end
+colors_rgbw = [color+tuple([0]) for color in colors_rgb]
+colors_rgbw.append((0, 0, 0, 255))
+
+# uncomment colors_rgbw if you have RGBW strip
+colors = colors_rgb
+# colors = colors_rgbw
+
+
+step = round(numpix / len(colors))
+current_pixel = 0
+strip.brightness(80)
+
+for color1, color2 in zip(colors, colors[1:]):
+    strip.set_pixel_line_gradient(current_pixel, current_pixel + step, color1, color2)
+    current_pixel += step
+
+strip.set_pixel_line_gradient(current_pixel, numpix - 1, violet, red)
+
+
+
+
+
+
+
+
+######################################################################
+
+
+
 
 Button_pins = [9,10,11,12]
 
-set_hour = 18
-set_minute = 55
+set_hour = 25
+set_minute = 61
 set_second = 00
 hour = 0
 minute = 0
@@ -82,11 +126,7 @@ def set_alarm():
     lcd.move_to(0,0)
     lcd.putstr("Set hour:")
     
-
-    
-    
-    while Button[3].value() != 1:
-        
+    while Button[3].value() != 1:    
         if Button[1].value() == 1:
             set_hour += 1
             utime.sleep(0.1)
@@ -98,6 +138,7 @@ def set_alarm():
             set_hour = set_hour%24
             
         hour = str(set_hour)
+        
         while len(hour) < 2:
             hour = '0' + hour
         
@@ -110,21 +151,15 @@ def set_alarm():
     lcd.putstr("Set minute:")
     
     while Button[3].value() != 1:
-        
-        
         if Button[1].value() == 1:
             set_minute += 1
             utime.sleep(0.1)
             set_minute = set_minute%60
         
-            
         elif Button[2].value() == 1:
             set_minute -= 1
             utime.sleep(0.1)
             set_minute = set_minute%60
-        
-        
-        
         
         minute = str(set_minute)
         while len(minute) < 2:
@@ -155,8 +190,8 @@ def check_alarm(set_hour,set_minute,set_second):
            
     buzzer.high()
     
-        
-
+utime.sleep(1)        
+buzzer.high()
 ### Welcome Message ###           
 lcd.move_to(0,0)
 lcd.putstr("Pico Alarm Clock")
@@ -166,6 +201,9 @@ utime.sleep(4)
 lcd.clear()
 
 while True:
+    
+    strip.rotate_right(1)
+    strip.show()
     
     (Y,M,D,day,hr,m,s)=ds.date_time()
     if s < 10:
