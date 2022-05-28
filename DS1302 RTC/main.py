@@ -49,7 +49,7 @@ while True:
     if D < 10:
         D = "0" + str(D)
     if M < 10:
-        hr = "0" + str(M)
+        M = "0" + str(M)
         
     lcd.move_to(0,0)
     lcd.putstr("Time:")
