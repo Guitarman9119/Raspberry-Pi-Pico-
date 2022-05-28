@@ -6,7 +6,7 @@ and T-622 for the I2C LCD library: https://github.com/T-622/RPI-PICO-I2C-LCD
 
 Remember to check out more tutorials on NerdCave - https://www.youtube.com/c/NerdCaveYT
 
-Project Pinout
+
 VCC - VSYS (PIN39)
 GND - GND (Any ground on Pico)
 CLK - GP18 (PIN24)
@@ -14,10 +14,10 @@ DAT - GP17 (PIN22)
 RST  - GP16 (PIN21)
 
 Buttons - User interface
-# 9  = Set_Alarm 
-# 10 = add minutes/hours
-# 11 = substract minutes/hoursSet_Minutes 
-# 12 = Confirm / Disable alarm
+# 6  = Set_Alarm 
+# 7 = add minutes/hours
+# 8 = substract minutes/hoursSet_Minutes 
+# 9 = Confirm / Disable alarm
 
 """
 
@@ -44,7 +44,7 @@ lcd.backlight_on()
 ################Setup DS1302 and initialize###########################
 ds = DS1302(Pin(18),Pin(17),Pin(16))
 ds.date_time() # returns the current datetime.
-ds.date_time([2022, 4, 9, 0, 1, 2, 55]) # set datetime. comment out
+#ds.date_time([2022, 5, 24, 0, 18, 24, 00]) # set datetime. comment out
 print(ds.date_time())
 ######################################################################
 
@@ -75,7 +75,6 @@ colors_rgbw.append((0, 0, 0, 255))
 colors = colors_rgb
 # colors = colors_rgbw
 
-
 step = round(numpix / len(colors))
 current_pixel = 0
 strip.brightness(80)
@@ -85,26 +84,12 @@ for color1, color2 in zip(colors, colors[1:]):
     current_pixel += step
 
 strip.set_pixel_line_gradient(current_pixel, numpix - 1, violet, red)
-
-
-
-
-
-
-
-
 ######################################################################
 
 
 
-
-Button_pins = [9,10,11,12]
-
-set_hour = 25
-set_minute = 61
-set_second = 00
-hour = 0
-minute = 0
+#################Buttons#############################################
+Button_pins = [6,7,8,9]
 
 Button = []
 # Loop to assign GPIO pins and setup input and outputs
@@ -112,7 +97,17 @@ for x in range(0,4):
 
     Button.append(Pin(Button_pins[x], Pin.IN, Pin.PULL_DOWN))
     Button[x].value(0)
-
+######################################################################
+    
+    
+#################Set initial values of alarm############################################# 
+set_hour = 25
+set_minute = 3
+set_second = 00
+hour = 0
+minute = 0
+#########################################################################################    
+    
 
 def set_alarm():
     
@@ -187,11 +182,12 @@ def check_alarm(set_hour,set_minute,set_second):
             utime.sleep(0.2)
             buzzer.high()
             lcd.clear()
-           
     buzzer.high()
-    
+
+
+
 utime.sleep(1)        
-buzzer.high()
+
 ### Welcome Message ###           
 lcd.move_to(0,0)
 lcd.putstr("Pico Alarm Clock")
