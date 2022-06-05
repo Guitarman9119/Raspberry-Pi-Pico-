@@ -49,8 +49,9 @@ I decided to make 3 seperate PCB files. Which is available in the repository.
 - PCB 2 - without I2C using 4 data pins, 8 Through hole LEDs
 - PCB 3 - with I2C LCD support and 4 data pins, WS2812b LEDs
 
-![My Image](images/PCB3D.png)
-![My Image](images/PCB2D.png)
+![My Image](images/PCB_I2C_through_hole_LEDs.png)
+![My Image](images/PCB_no_i2c.png)
+![My Image](images/PCB_WS2812b.png)
 
 
 
