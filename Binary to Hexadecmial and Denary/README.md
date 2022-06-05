@@ -1,11 +1,11 @@
 #  Binary to Hexa / Decimal converter on Pi Pico
 
 ## Youtube Video Link
-Please watch the video here and support the channel by pressing the like button and subsribing to the channel.
+If you found this project helpful or have any suggestions please let me know. Watch the video here and support the channel by pressing the like button and subsribing to the channel.
 
 
 ## Overview
-This is the development video blog of the Binary to Hexa / decimal converter learning board, which I am working on.  Due to lockdown in Shanghai I am not able to receive the final PCB version yet, but it will be shared in this write up. The goal of this board is to teach you the fundamentals of number systems used in computers and serve as a great soldering practice board.
+This is project is a Binary to Hexadecimal / denary converter learning board. The goal of this board is to teach you the fundamentals of number systems used in computers and serve as a great soldering practice board.
 
 In terms of the Raspberry Pi Pico - You will learn how to connect the 16X2 Character LCD, setting up pins as inputs for the buttons and output for the LEDs, and learning MicroPython, related to the Pico.
 
