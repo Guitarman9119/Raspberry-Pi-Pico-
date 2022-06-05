@@ -23,7 +23,7 @@ The Pico will take the 8 bit number and convert it into decimal and hexadecimal.
 The 16x2 character LCD display will be used as output to indicate the results.
 The LED will display the decimal, hexadecimal and binary number.
 
-![My Image](images/BREAD_BOARD.jpg)
+![My Image](images/BREAD_BOARD.JPG)
 ![My Image](images/LEARNING_BOARD.png)
 
 ## Components needed
