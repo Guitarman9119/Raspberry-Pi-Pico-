@@ -1,6 +1,9 @@
 #  Binary to Hexa / Decimal converter on Pi Pico
 
 ## Youtube Video Link
+
+https://www.youtube.com/watch?v=lxxzXakOPQk
+
 If you found this project helpful or have any suggestions please let me know. Watch the video here and support the channel by pressing the like button and subsribing to the channel.
 
 
