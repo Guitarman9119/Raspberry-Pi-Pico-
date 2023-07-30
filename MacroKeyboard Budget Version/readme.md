@@ -28,7 +28,7 @@ Here is the cost breakdown of the project (assuming you have basic tools):
 
 The schematic diagram is available to view here. The design is straightforward as each button was connected to a GPIO pin to the Raspberry Pi Pico. The reason for not using a matrix is due to limited space on a 10 x 10 cm board size, which meant individual GPIO pins could be used. This also means that diodes are not needed to prevent ghosting effect when pressing the keys. The board is kept this dimension to minimize the total cost of the board. The screen can be removed if more buttons are needed, but will require a new PCB design and updated code.
 
-<figure><img src="../.gitbook/assets/Schematic_MacroKeyboard V2_2023-06-05.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Schematic_MacroKeyboard V2_2023-06-05.svg" alt=""><figcaption></figcaption></figure>
 
 ### Raspberry Pi Pico
 
