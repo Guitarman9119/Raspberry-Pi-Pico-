@@ -72,16 +72,16 @@ https://jlcpcb.com/?from=NerdCave
 
 First, you can download the gerber file in the repositroy Gerber_MacroKeyboard copy.zip as shown below:
 
-<figure><img src="images/gerber_file.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/gerber_file.png" alt=""><figcaption></figcaption></figure>
 
 Click "Order Now" on JLCPCB, make sure you are set to "Standard PCB/PCBA" tab, click "Add Gerber File", and upload the Trigger_Paddle_Gerbers.zip. Once the files are uploaded, you should see the board process and then load in as shown below:
 
-<figure><img src="images/jlc_order.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/jlc_order.png" alt=""><figcaption></figcaption></figure>
 
 
-<figure><img src="images/jlc_add_gerber.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/jlc_add_gerber.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="images/jlc_custom.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/jlc_custom.png" alt=""><figcaption></figcaption></figure>
 
 
 JLC Free 6-8 Layer PCBs via Coupon(50*50mm): https://jlcpcb.com/?from=NerdCave 
