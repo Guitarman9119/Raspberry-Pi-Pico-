@@ -74,16 +74,22 @@ First, you can download the gerber file in the repositroy Gerber_MacroKeyboard c
 
 <figure><img src="images/gerber_file.png" alt=""><figcaption></figcaption></figure>
 
-Click "Order Now" on JLCPCB, make sure you are set to "Standard PCB/PCBA" tab, click "Add Gerber File", and upload the Trigger_Paddle_Gerbers.zip. Once the files are uploaded, you should see the board process and then load in as shown below:
+Click "Order Now" on JLCPCB, make sure you are set to "Standard PCB/PCBA" tab, 
+
+
+
 
 <figure><img src="images/jlc_order.png" alt=""><figcaption></figcaption></figure>
 
+click "Add Gerber File", and upload the Trigger_Paddle_Gerbers.zip. Once the files are uploaded, you should see the board process and then load in as shown below:
 
 <figure><img src="images/jlc_add_gerber.png" alt=""><figcaption></figcaption></figure>
 
+You can choose the color of the PCB you want, note that all the other settings should be kept as default.
+
 <figure><img src="images/jlc_custom.png" alt=""><figcaption></figcaption></figure>
 
-
+Further more remember to look at the coupons available on JLCPCB: 
 JLC Free 6-8 Layer PCBs via Coupon(50*50mm): https://jlcpcb.com/?from=NerdCave 
 Get more Coupons: https://jlcpcb.com/coupon-center
 
