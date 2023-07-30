@@ -66,12 +66,22 @@ The PCB was ordered from JLCPCB (note: channel sponsor) and as always the qualit
 
 Let's walk through the steps on how you can order a PCB from JLC
 
-###Sign up using:
+### Sign up using:
 https://jlcpcb.com/?from=NerdCave 
 
 
+First, you can download the gerber file in the repositroy Gerber_MacroKeyboard copy.zip as shown below:
+
+<figure><img src="images/gerber_file" alt=""><figcaption></figcaption></figure>
+
+Click "Order Now" on JLCPCB, make sure you are set to "Standard PCB/PCBA" tab, click "Add Gerber File", and upload the Trigger_Paddle_Gerbers.zip. Once the files are uploaded, you should see the board process and then load in as shown below:
+
+<figure><img src="images/jlc_order" alt=""><figcaption></figcaption></figure>
 
 
+<figure><img src="images/jlc_add_gerber" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="images/jlc_custom" alt=""><figcaption></figcaption></figure>
 
 
 JLC Free 6-8 Layer PCBs via Coupon(50*50mm): https://jlcpcb.com/?from=NerdCave 
