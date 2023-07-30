@@ -34,29 +34,29 @@ The schematic diagram is available to view here. The design is straightforward a
 
 
 
-<figure><img src="../.gitbook/assets/PICO.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/PICO.PNG" alt=""><figcaption></figcaption></figure>
 
 ### Button (Keys)
 
 
 
-<figure><img src="../.gitbook/assets/Keys.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Keys.PNG" alt=""><figcaption></figcaption></figure>
 
 ### 1.3 OLED display
 
-<figure><img src="../.gitbook/assets/OLED.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/OLED.PNG" alt=""><figcaption></figcaption></figure>
 
 ### Rotary encoder
 
-<figure><img src="../.gitbook/assets/Rotary encoder.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Rotary encoder.PNG" alt=""><figcaption></figcaption></figure>
 
 ### External button (Mode selection)
 
-<figure><img src="../.gitbook/assets/Mode select.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Mode select.PNG" alt=""><figcaption></figcaption></figure>
 
 ### WS2812B
 
-<figure><img src="../.gitbook/assets/RGB LED.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/RGB LED.PNG" alt=""><figcaption></figcaption></figure>
 
 ## PCB Design
 
@@ -64,11 +64,11 @@ The PCB design is simple which allows you to mount the PCB easily into different
 
 ### PCB Top:
 
-<figure><img src="../.gitbook/assets/PCB 2D front View.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/PCB 2D front View.PNG" alt=""><figcaption></figcaption></figure>
 
 ### PCB Bottom:
 
-<figure><img src="../.gitbook/assets/PCB 2D back View.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/PCB 2D back View.PNG" alt=""><figcaption></figcaption></figure>
 
 ## Circuit Python
 
@@ -535,13 +535,13 @@ I made two versions of the enclosure, which I designed in SolidWorks and printed
 
 ### Version 1
 
-<figure><img src="../.gitbook/assets/3D view.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/3D view.PNG" alt=""><figcaption></figcaption></figure>
 
 The enclosure can be printed in two parts, and does not require any supports. The bottom can be laser cut instead of printed, which will come down to choice and availability of equipment and machinery.&#x20;
 
 ### Version 2
 
-<figure><img src="../.gitbook/assets/3D view version 2.PNG" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/3D view version 2.PNG" alt=""><figcaption></figcaption></figure>
 
 This is the most simple design which is just a square box which you can mount PCB.&#x20;
 
