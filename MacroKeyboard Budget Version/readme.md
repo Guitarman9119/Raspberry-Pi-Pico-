@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to this tutorial on creating a cost effective macro keyboard PCB using EasyEDA and Raspberry Pi Pico with Circuit Python! By the end of this tutorial, you'll have a fully functional macro keyboard that you can customize to your heart's content. So let's get started!
+Welcome to this tutorial on creating a cost effective macro keyboard PCB using EasyEDA, JLCPCB Printed Circuit Board and Raspberry Pi Pico with Circuit Python! By the end of this tutorial, you'll have a fully functional macro keyboard that you can customize to your heart's content. So let's get started!
 
 ### What is a macro keyboard?
 
@@ -61,6 +61,24 @@ The schematic diagram is available to view here. The design is straightforward a
 ## PCB Design
 
 The PCB design is simple which allows you to mount the PCB easily into different enclosures with the 4 mounting holes in the corners. The placement of the Pico was placed on the bottom layer which will be connected through header pins. If anyone in the community have suggestions on how to improve the layout or want to contribute reach out as I would like to see how this project can be taken further. &#x20;
+
+The PCB was ordered from JLCPCB (note: channel sponsor) and as always the quality of the PCB is perfect. I have been using JLCPCB for all my projects and is great to have a company like JLC sponsering NerdCave and contribute to opensource content. If you are interested
+
+Let's walk through the steps on how you can order a PCB from JLC
+
+###Sign up using:
+https://jlcpcb.com/?from=NerdCave 
+
+
+
+
+
+
+JLC Free 6-8 Layer PCBs via Coupon(50*50mm): https://jlcpcb.com/?from=NerdCave 
+Get more Coupons: https://jlcpcb.com/coupon-center
+
+
+
 
 ### PCB Top:
 
