@@ -38,7 +38,9 @@ The following tools will be needed to built the motivational box.
 
 The schematic diagram is shown below. The design is straightforward as each button was connected to a GPIO pin to the Raspberry Pi Pico W, and a connector for the neopixel RGB LEDs.
 
-<figure><img src="/motivational_box_schematic.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivational_box_schematic.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="images/Schematic_MacroKeyboard V2_2023-06-05.svg" alt=""><figcaption></figcaption></figure>
 
 ## PCB ( JLCPCB )
 
