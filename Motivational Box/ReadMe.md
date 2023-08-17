@@ -6,7 +6,7 @@ Do you ever find yourself struggling to stay motivated and on track with your da
 
 Now for you to understand why I created this project I need to tell you a story. The last few months, I was really struggling with my motivation. I had a lot of goals that I wanted to achieve, but I just couldn't seem to get started. I tried all kinds of things - setting reminders on my phone, using sticky notes, even trying to hire a personal coach or telling all my friends and colleagues today is the day I am going to change. But nothing really worked.
 
-**Disclaimer** - JLCPCB was generous to sponsor this project and provide the PCB used in this project.
+**Disclaimer** - JLCPCB graciously sponsored this project by providing the PCB utilized in its development.
 
 
 
