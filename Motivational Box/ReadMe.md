@@ -1,4 +1,4 @@
-# Cheap Fully Programmable Macro Keyboard V1
+# Motivational Box
 
 ## Introduction
 
