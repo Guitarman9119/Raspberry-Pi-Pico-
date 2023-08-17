@@ -40,7 +40,7 @@ The schematic diagram is shown below. The design is straightforward as each butt
 
 <figure><img src="images/motivational_box_schematic.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="images/Schematic_MacroKeyboard V2_2023-06-05.svg" alt=""><figcaption></figcaption></figure>
+
 
 ## PCB ( JLCPCB )
 
@@ -56,19 +56,19 @@ Sign up through [https://jlcpcb.com/?from=NerdCave ](https://jlcpcb.com/?from=Ne
 
 Click on Add gerber file
 
-<figure><img src="/motivationalbox_pcb_upload.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_pcb_upload.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="/motivationalbox_pcb_color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_pcb_color.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="/motivationalbox_cart.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_cart.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
-<figure><img src="/motivationalbox_pcb.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_pcb.png" alt=""><figcaption></figcaption></figure>
 
 ## MicroPython
 
@@ -392,7 +392,7 @@ before creating the token from github let's first look at the website and hostin
 
 ## Website Tracker
 
-<figure><img src="/motivationalbox_website.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_website.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -429,13 +429,13 @@ here we can change the h1 to be any other task.
 
 Netlify was used to host the tracker as it offers free hosting for small projects. Sign up to netlify and add a new site&#x20;
 
-<figure><img src="/motivationalbox_netlify.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_netlify.png" alt=""><figcaption></figcaption></figure>
 
 You can deploy with GitHub. This will guide you through the steps to allow netlify to access and read your repository to host your tracker online.
 
 
 
-<figure><img src="/motivationalbox_netlify2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_netlify2.png" alt=""><figcaption></figcaption></figure>
 
 ## How to create github token
 
@@ -467,7 +467,7 @@ The box was designed in Fustion 360. It is important that you use white filament
 
 You can download all the 3D files here: [https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Motivational%20Box/3D%20STL%20Files](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Motivational%20Box/3D%20STL%20Files)
 
-<figure><img src="/motivationalbox_3D_render.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/motivationalbox_3D_render.png" alt=""><figcaption></figcaption></figure>
 
 
 
