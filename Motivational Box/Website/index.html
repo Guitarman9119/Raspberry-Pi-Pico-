@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Heatmap</title>
+    <style>
+      .heatmap {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 700px;
+      }
+  
+      .heatmap .day {
+          width: 14px;
+          height: 14px;
+          border: 1px solid #ccc;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 8px;
+          overflow: hidden;
+      }
+  
+      .heatmap .completed {
+          background-color: green;
+      }
+  
+      .heatmap .incomplete {
+          background-color: gray;
+      }
+  
+      .heatmap .future {
+          background-color: gray;
+      }
+  
+      .heatmap .day .date {
+          font-size: 10px;
+          margin-bottom: 2px;
+      }
+  
+      .heatmap .day .task-container {
+          display: flex;
+          flex-direction: column-reverse;
+          flex-grow: 1;
+          padding-top: 2px;
+          overflow: hidden;
+      }
+  
+      .heatmap .day .task-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          overflow: hidden;
+      }
+  
+      .heatmap .day .task {
+          height: 2px;
+          margin-bottom: 1px;
+      }
+  
+      .heatmap .day .task-name {
+          font-size: 6px;
+          line-height: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 12px;
+      }
+  </style>
+</head>
+<body>
+    <div class="heatmap" id="heatmap-container"></div>
+
+    <script src="heatmap.js"></script>
+</body>
+</html>
