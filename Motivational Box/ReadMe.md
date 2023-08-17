@@ -15,7 +15,7 @@ The following table is the list of components needed along with the quantity of 
 | Components              | Quantity            
 | ----------------------- | ------------------- 
 | Raspberry Pi Pico W              | 1                                   
-| Custom PCB (JLCPCB) | 11                 
+| Custom PCB (JLCPCB) | Files above                 
 | Arcade Buttons            | 5                             
 | 3D Printed Parts         | Few various parts                                   
 | Wires       | Few                  
