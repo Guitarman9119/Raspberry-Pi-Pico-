@@ -1,16 +1,4 @@
----
-title: "Motivational Box"
-description: "Raspberry Pi Pico Motivation box and tracker"
-lead: ""
-date: 2020-10-06T08:48:57+00:00
-lastmod: 2020-10-06T08:48:57+00:00
-draft: false
-images: []
-menu:
-weight: 200
-
----
-<iframe width="728" height="410" src="https://youtu.be/7hYTQY_3xUc" title="YouTube video player" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+# Cheap Fully Programmable Macro Keyboard V1
 
 ## Introduction
 
