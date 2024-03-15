@@ -1,21 +1,5 @@
----
-title: "Wi-Fi Multiplug"
-description: "Raspberry Pi Pico W - Wi-Fi Multi Plug"
-lead: ""
-date: 2023-10-12T08:48:57+00:00
-lastmod: 2023-10-12T08:48:57+00:00
-draft: false
-images: []
-menu:
-weight: 200
-
----
 ### YouTube Video
-<iframe width="728" height="410" src="https://www.youtube.com/embed/seFGxxC4bDo" title="YouTube video player" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-
-
+https://www.youtube.com/embed/seFGxxC4bDo
 
 ## Introduction
 
