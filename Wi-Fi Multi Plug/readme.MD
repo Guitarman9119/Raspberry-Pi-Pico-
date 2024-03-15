@@ -28,7 +28,7 @@ Special thanks to JLCPCB who sponsored this project by providing the PCB. If you
 | Miscellaneous (glue etc.) | Few      |
 
 
-##Tools / Equipment
+## Tools / Equipment
 
 |Tools / Equipment / Software|
 |----------------------------|
