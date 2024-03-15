@@ -7,7 +7,7 @@ In this tutorial, I will be guiding you through the process of creating a smart 
 
 **Disclaimer**: This tutorial involves the use of live alternating current and is for educational purposes only. If you want to recreate this project, please seek the guidance of a professional.
 
-<figure><img src="images/multiplug.jpg" alt=""><figcaption><p>Multi Plug</p></figcaption></figure>
+<figure><img src="images/multiplug.jpg" alt=""><figcaption></figcaption></figure>
 
 ## Project Sponsors
 
