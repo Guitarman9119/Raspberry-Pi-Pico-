@@ -41,8 +41,6 @@ Special thanks to JLCPCB who sponsored this project by providing the PCB. If you
 
 The schematic diagram is shown below. The design is straightforward as each button was connected to a GPIO pin to the Raspberry Pi Pico W,&#x20;
 
-
-
 <figure><img src="images/schematicrelay.png" alt=""><figcaption></figcaption></figure>
 
 #### Breadboard Testing
