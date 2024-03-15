@@ -7,7 +7,7 @@ In this tutorial, I will be guiding you through the process of creating a smart 
 
 **Disclaimer**: This tutorial involves the use of live alternating current and is for educational purposes only. If you want to recreate this project, please seek the guidance of a professional.
 
-<figure><img src="/multiplug.jpg" alt=""><figcaption><p>Multi Plug</p></figcaption></figure>
+<figure><img src="images/multiplug.jpg" alt=""><figcaption><p>Multi Plug</p></figcaption></figure>
 
 ## Project Sponsors
 
@@ -27,7 +27,7 @@ The schematic diagram is shown below. The design is straightforward as each butt
 
 
 
-<figure><img src="/schematicrelay.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/schematicrelay.png" alt=""><figcaption></figcaption></figure>
 
 #### Breadboard Testing
 
@@ -37,7 +37,7 @@ Before we start building the project, it is recommended to assemble everything o
 
 After testing, use EasyEDA to create the PCB. This board will make the project a lot easier to be used with the relay board. After double-checking the PCB board, place the order through JLCPCB.
 
-<figure><img src="/pcb.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb.png" alt=""><figcaption></figcaption></figure>
 
 ### PCB ( JLCPCB )
 
@@ -53,19 +53,19 @@ Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pi
 
 Click on **Add Gerber file**
 
-<figure><img src="/gerber.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/gerber.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="/pcb color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb color.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
-<figure><img src="/Screenshot 2023-12-10 141213.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Screenshot 2023-12-10 141213.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -82,13 +82,13 @@ The first version of the case is available here:
 
 
 
-<figure><img src="/3d Model.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/3d Model.png" alt=""><figcaption></figcaption></figure>
 
 ## Connecting the Outlets
 
 The next part involves connecting all the outlets to the relay. A diagram is provided to show how it was done for each outlet.
 
-<figure><img src="/Schematic wire.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Schematic wire.png" alt=""><figcaption></figcaption></figure>
 
 ## Programming the Raspberry Pi Pico W
 
