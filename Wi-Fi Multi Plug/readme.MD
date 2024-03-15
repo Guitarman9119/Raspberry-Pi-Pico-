@@ -28,8 +28,9 @@ Special thanks to JLCPCB who sponsored this project by providing the PCB. If you
 | Miscellaneous (glue etc.) | Few      |
 
 
+##Screw driver	
 
-| Tools/Equipment           | 
+
 |---------------------------|
 | Soldering Iron + Solder   | 
 | Computer + Thonny IDE     |
