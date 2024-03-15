@@ -15,11 +15,26 @@ Special thanks to JLCPCB who sponsored this project by providing the PCB. If you
 
 ## Components + Tools Breakdown
 
-<table><thead><tr><th>Component</th><th>Quantity</th><th data-hidden>Quantity</th><th data-hidden></th></tr></thead><tbody><tr><td>Raspberry Pi Pico W</td><td>1</td><td>1</td><td></td></tr><tr><td>Custom PCB (JLCPCB)</td><td>1</td><td>1</td><td></td></tr><tr><td>Wires (Jumper Wires F-M)</td><td>Few</td><td>Few</td><td></td></tr><tr><td>Wire 22 AWG Single Core -Red Black Yellow</td><td>+- 1.5 Meter</td><td></td><td></td></tr><tr><td>8-channel relay module board</td><td>1</td><td>5</td><td></td></tr><tr><td>3D printed parts</td><td>2 Parts</td><td>Few printed parts</td><td></td></tr><tr><td>Power sockets</td><td>8</td><td></td><td></td></tr><tr><td>C14 Power entry module</td><td>1</td><td></td><td></td></tr><tr><td>Miscellaneous (glue etc.)</td><td></td><td>Explained in steps</td><td></td></tr></tbody></table>
+| Components                | Quantity |
+|---------------------------|----------|
+| Raspberry Pi Pico W       | 1        |
+| Custom PCB (JLCPCB)       | 1        |
+| Wires (Jumer F-M)         | 10       |
+| 22AWG single core         | 1.5m     |
+| 8-Channel Relay Module    | 1        |
+| 3D printed Parts          | Few      |
+| Power Socket              | 1        |
+| C14 Power module          | 1        |
+| Miscellaneous (glue etc.) | Few      |
 
 
 
-<table><thead><tr><th>Tools / Equipment</th><th data-hidden></th></tr></thead><tbody><tr><td>Soldering Iron + Solder</td><td></td></tr><tr><td>Computer + Thonny IDE</td><td></td></tr><tr><td>Screw driver</td><td></td></tr></tbody></table>
+| Tools/Equipment           | 
+|---------------------------|
+| Soldering Iron + Solder   | 
+| Computer + Thonny IDE     |
+| Screw driver              |
+
 
 ## Schematic Diagram&#x20;
 
