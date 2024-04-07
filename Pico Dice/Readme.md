@@ -213,11 +213,11 @@ Click on Add Gerber file
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="images//pcb color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/colorselect.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="images//Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
@@ -225,7 +225,7 @@ Then after a few days depending on your location you will receive your great qua
 
 The enclosure was designed in Fusion 360.
 
-<figure><img src="images//pico_dice_3D.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pico_dice_3D.png" alt=""><figcaption></figcaption></figure>
 
 You can download all the 3D files here: [https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Pico%20Dice/3D%20model](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Pico%20Dice/3D%20model)
 
