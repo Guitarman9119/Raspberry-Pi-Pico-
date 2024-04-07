@@ -209,7 +209,7 @@ Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pi
 
 Click on Add Gerber file
 
-<figure><img src="images//gerber.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/addgerber.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
