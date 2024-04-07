@@ -8,7 +8,14 @@ In this project tutorial, we are going to make a Raspberry Pi Pico Dice. The dic
 
 ## Components + Tools Breakdown
 
-<table><thead><tr><th>Component</th><th>Quantity</th><th data-hidden>Quantity</th><th data-hidden></th></tr></thead><tbody><tr><td>Raspberry Pi Pico</td><td>1</td><td>1</td><td></td></tr><tr><td>Custom PCB (JLCPCB)</td><td>1</td><td>1</td><td></td></tr><tr><td>14 - 5mm LEDs</td><td>14</td><td>Few</td><td></td></tr><tr><td>330-1k Ohm Resistor</td><td>14</td><td>5</td><td></td></tr><tr><td>3D printed parts</td><td>1</td><td>Few printed parts</td><td></td></tr><tr><td>3mm screw</td><td>4</td><td>Explained in steps</td><td></td></tr></tbody></table>
+| Components          | Quantity |
+| ------------------- | -------- |
+| Raspberry Pi Pico W | 1        |
+| Custom PCB (JLCPCB) | 1        |
+| 5mm LEDs            | 14       |
+| 330-1k Ohm Resistor | 14       |
+| 3D printed parts    | 1        |
+| 3mm screw           | 4        |
 
 
 
