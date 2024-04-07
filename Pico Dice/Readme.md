@@ -30,7 +30,7 @@ In this project tutorial, we are going to make a Raspberry Pi Pico Dice. The dic
 
 A simple dice was first made on breadboard for testing. The following circuit diagram was used.
 
-<figure><img src="../.gitbook/assets/dice_project_schematic.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/dice_project_schematic.png" alt=""><figcaption></figcaption></figure>
 
 We need 7 LEDs to mimic all the possible shapes for a dice pattern as shown in the following figure
 
