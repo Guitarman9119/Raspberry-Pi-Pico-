@@ -19,7 +19,12 @@ In this project tutorial, we are going to make a Raspberry Pi Pico Dice. The dic
 
 
 
-<table><thead><tr><th>Tools / Equipment</th><th data-hidden></th></tr></thead><tbody><tr><td>Soldering Iron + Solder</td><td></td></tr><tr><td>Computer + Thonny IDE</td><td></td></tr><tr><td>Screw driver</td><td></td></tr></tbody></table>
+| Tools / Equipment       |
+| ----------------------- |
+| Soldering Iron + Solder |
+| Computer + Thonny IDE   |
+| Screw driver            |
+
 
 ## Breadboard Prototype
 
