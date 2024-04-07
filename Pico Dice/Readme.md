@@ -34,7 +34,7 @@ A simple dice was first made on breadboard for testing. The following circuit di
 
 We need 7 LEDs to mimic all the possible shapes for a dice pattern as shown in the following figure
 
-<figure><img src="../.gitbook/assets/dice_patterns.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//dice_patterns.jpg" alt=""><figcaption></figcaption></figure>
 
 We will recreate this patterns later when designing the PCB.&#x20;
 
@@ -193,11 +193,11 @@ In the main loop, a check is done as to whether the button has been pressed. If 
 
 With a working prototype we can create a custom PCB using EasyEda. The following figure is the schematic diagram for the Pico Dice PCB. Since we have access to 26 GPIO pins on the Pico we can connect all the LEDs to its own GPIO pin and don't require any special drivers to control all the LEDs.
 
-<figure><img src="../.gitbook/assets/schematic.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//schematic.png" alt=""><figcaption></figcaption></figure>
 
 The following figure is the layout of the components on the PCB, which as shown above mimics the patterns of a typical dice.
 
-<figure><img src="../.gitbook/assets/PCB_pico_dice.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//PCB_pico_dice.png" alt=""><figcaption></figcaption></figure>
 
 The PCB was ordered through JLCPCB. They offer great PCBs at a low cost and have promotions and coupons available throughout the year. You can sign up using here, or using the following link:
 
@@ -209,15 +209,15 @@ Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pi
 
 Click on Add Gerber file
 
-<figure><img src="../.gitbook/assets/gerber.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//gerber.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="../.gitbook/assets/pcb color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//pcb color.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
@@ -225,7 +225,7 @@ Then after a few days depending on your location you will receive your great qua
 
 The enclosure was designed in Fusion 360.
 
-<figure><img src="../.gitbook/assets/pico_dice_3D.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images//pico_dice_3D.png" alt=""><figcaption></figcaption></figure>
 
 You can download all the 3D files here: [https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Pico%20Dice/3D%20model](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Pico%20Dice/3D%20model)
 
