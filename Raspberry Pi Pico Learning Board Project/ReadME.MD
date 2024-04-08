@@ -34,12 +34,9 @@ The board is open source and you can order the PCB using any PCB manufacturer. I
 
 ### Step 1: Raspberry Pi Pico
 
-[![Raspberry Pi Pico](https://content.instructables.com/FOI/3MMA/LQQNAAWR/FOI3MMALQQNAAWR.png?auto=webp\&frame=1\&width=1024\&fit=bounds\&md=a0879270c274914b060398978022ae3c)](https://content.instructables.com/FOI/3MMA/LQQNAAWR/FOI3MMALQQNAAWR.png?auto=webp\&frame=1\&width=1024\&fit=bounds\&md=a0879270c274914b060398978022ae3c)
+*insert image here
 
 The Raspberry Pi Pico is a compact, low-cost, high-performance microcontroller board developed by the Raspberry Pi Foundation. It’s designed to provide a flexible and accessible platform for both beginners and professionals to create a wide range of digital projects and applications.
-
-\
-
 
 #### Key Features&#x20;
 
@@ -63,7 +60,7 @@ Whether you’re a hobbyist looking to experiment with electronics, a profession
 
 ### Step 2: Ordering Learning Board (JLCPCB)
 
-[![Ordering Learning Board (JLCPCB)](https://content.instructables.com/FEJ/26M4/LQQNA8UH/FEJ26M4LQQNA8UH.png?auto=webp\&frame=1\&width=700\&fit=bounds\&md=ad9532c40ec352e1ed9c01fc4096421f)](https://content.instructables.com/FEJ/26M4/LQQNA8UH/FEJ26M4LQQNA8UH.png?auto=webp\&frame=1\&fit=bounds\&md=ad9532c40ec352e1ed9c01fc4096421f)[![Ordering Learning Board (JLCPCB)](https://content.instructables.com/FK6/7Z5D/LQQNA8V9/FK67Z5DLQQNA8V9.png?auto=webp\&frame=1\&width=419\&fit=bounds\&md=a4e1b8879a75fbe8b10053637fbd3209)](https://content.instructables.com/FK6/7Z5D/LQQNA8V9/FK67Z5DLQQNA8V9.png?auto=webp\&frame=1\&fit=bounds\&md=a4e1b8879a75fbe8b10053637fbd3209)[![Ordering Learning Board (JLCPCB)](https://content.instructables.com/F3H/KQTN/LQQNABI8/F3HKQTNLQQNABI8.png?auto=webp\&frame=1\&crop=3:2\&width=419\&fit=bounds\&md=1afedc60ba931a891d4480b152aa772c)](https://content.instructables.com/F3H/KQTN/LQQNABI8/F3HKQTNLQQNABI8.png?auto=webp\&frame=1\&width=1024\&fit=bounds\&md=1afedc60ba931a891d4480b152aa772c)2 More Images
+****insert images here
 
 The PCB was ordered through JLCPCB. They offer great PCBs at a low cost and have promotions and coupons available throughout the year.
 
@@ -87,7 +84,7 @@ Alternative method will be using Thonny to install MicroPython. If you are compl
 
 ### Step 4: Learning Board 1
 
-[![Learning Board 1](https://content.instructables.com/F79/8NR6/LQQNA7MR/F798NR6LQQNA7MR.jpg?auto=webp\&frame=1\&width=617\&height=1024\&fit=bounds\&md=3673851a2f959499be38886253f953b7)](https://content.instructables.com/F79/8NR6/LQQNA7MR/F798NR6LQQNA7MR.jpg?auto=webp\&frame=1\&width=1024\&height=1024\&fit=bounds\&md=3673851a2f959499be38886253f953b7)[![Learning Board 1](https://content.instructables.com/F6A/JZ1N/LQQNAE9C/F6AJZ1NLQQNAE9C.png?auto=webp\&frame=1\&width=583\&fit=bounds\&md=29e3b64f689b873c91e9e15b2539fc8f)](https://content.instructables.com/F6A/JZ1N/LQQNAE9C/F6AJZ1NLQQNAE9C.png?auto=webp\&frame=1\&width=1024\&fit=bounds\&md=29e3b64f689b873c91e9e15b2539fc8f)
+**** insert image of board and schematic
 
 Board 1 - consists of a few **input** and **output** devices. To get you started learning the Raspberry Pi Pico. From this board, we will do 7 Simple Lessons. You can easily change the task to fit your students need or create more lessons. The Gerber file to learning board 1 is available to download here:
 
