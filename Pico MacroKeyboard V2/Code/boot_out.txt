@@ -1,0 +1,10 @@
+Adafruit CircuitPython 8.2.0 on 2023-07-05; Raspberry Pi Pico with rp2040
+Board ID:raspberry_pi_pico
+UID:E660C06213368328
+boot.py output:
+Traceback (most recent call last):
+  File "boot.py", line 61, in <module>
+  File "adafruit_hid/consumer_control.py", line 52, in __init__
+  File "adafruit_hid/consumer_control.py", line 70, in send
+  File "adafruit_hid/consumer_control.py", line 90, in press
+OSError: USB busy
