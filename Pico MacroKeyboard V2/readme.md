@@ -4,6 +4,8 @@
 
 Welcome to this tutorial on creating a mechanical macro keyboard PCB using EasyEDA and Raspberry Pi Pico with Circuit Python.
 
+<figure><img src="Images/macro.png" alt=""><figcaption></figcaption></figure>
+
 ### What is a macro keyboard?
 
 Macro keyboards are an excellent way to streamline your workflow and increase productivity. With a macro keyboard, you can automate repetitive tasks, execute complex commands with a single key press, and customize your keyboard layout to your needs.
