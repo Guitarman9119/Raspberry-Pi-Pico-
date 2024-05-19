@@ -30,7 +30,7 @@ Here is the cost breakdown of the project (assuming you have basic tools):
 The schematic diagram is available to view here. The design is straightforward as each button was connected to a GPIO pin to the Raspberry Pi Pico. The reason for not using a matrix is due to limited space on a 10 x 10 cm board size, which meant individual GPIO pins could be used. This also means that diodes are not needed to prevent ghosting effect when pressing the keys. The board is kept this dimension to minimize the total cost of the board. The screen can be removed if more buttons are needed, but will require a new PCB design and updated code.
 
 
-<figure><img src="images/macro_easy_eda_schematic.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/macro_easy_eda_schematic.svg" alt=""><figcaption></figcaption></figure>
 
 ## PCB Design
 
@@ -38,11 +38,11 @@ The PCB design is simple which allows you to mount the PCB easily into different
 
 ### PCB Top:
 
-<figure><img src="images/PCB_macro_v2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/PCB_macro_v2.png" alt=""><figcaption></figcaption></figure>
 
 ### PCB Bottom:
 
-<figure><img src="images/PCB_macro_v2_bottom.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/PCB_macro_v2_bottom.png" alt=""><figcaption></figcaption></figure>
 
 ## Circuit Python
 
@@ -501,9 +501,9 @@ The enclosure was made in Fusion360. The enclosure consist of two part the main 
 
 
 
-<figure><img src="images/Main_body.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/Main_body.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="images/Bottom.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/Bottom.png" alt=""><figcaption></figcaption></figure>
 
 
 
