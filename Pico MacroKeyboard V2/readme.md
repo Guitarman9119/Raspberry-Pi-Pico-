@@ -46,6 +46,35 @@ The PCB design is simple which allows you to mount the PCB easily into different
 
 <figure><img src="Images/PCB_macro_v2_bottom.png" alt=""><figcaption></figcaption></figure>
 
+## PCB ( JLCPCB )
+
+The PCB was ordered through JLCPCB. They offer great PCBs at a low cost and have promotions and coupons available throughout the year. You can sign up using here, or using the following link:
+
+[https://jlcpcb.com/?from=Nerd ](https://jlcpcb.com/?from=Nerd) that will support me as a creator to keep making content that is accesseble and open source at no charge to you.
+
+Ordering the PCB is very simple:
+
+Download the Gerber file in the repository
+
+Sign up through [https://jlcpcb.com/?from=Nerd ](https://jlcpcb.com/?from=Nerd)
+
+Click on Add gerber file
+
+<figure><img src="images/1.png" alt=""><figcaption></figcaption></figure>
+
+leave all the settings as default given. You might want change the PCB color which you can do here:
+
+<figure><img src="images/22.png" alt=""><figcaption></figcaption></figure>
+
+Enter you shipping details, save to cart
+
+<figure><img src="images/33.png" alt=""><figcaption></figcaption></figure>
+
+Then after a few days depending on your location you will receive your great quality PCB.
+
+
+
+
 ## Circuit Python
 
 CircuitPython is a variant of the Python programming language designed for microcontrollers, specifically those based on the ARM Cortex-M family of processors. It allows developers to write Python code that can interact with hardware components and sensors, making it a popular choice for DIY electronics projects.
