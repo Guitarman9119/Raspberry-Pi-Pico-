@@ -60,15 +60,15 @@ Sign up through [https://jlcpcb.com/?from=Nerd ](https://jlcpcb.com/?from=Nerd)
 
 Click on Add gerber file
 
-<figure><img src="images/pcbadd.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/pcbadd.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="images/22.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/22.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="images/33.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Images/33.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
