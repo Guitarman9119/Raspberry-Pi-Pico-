@@ -40,11 +40,11 @@ In this project, I've engineered a custom PCB (Printed Circuit Board) that simpl
 
 ### PCB Top:
 
-<figure><img src="/pcb_joystick_front.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb_joystick_front.png" alt=""><figcaption></figcaption></figure>
 
 ### PCB Bottom:
 
-<figure><img src="/pcb_joystick_bottom.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb_joystick_bottom.png" alt=""><figcaption></figcaption></figure>
 
 ### Order PCB (JLCPCB)
 
@@ -58,15 +58,15 @@ Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pi
 
 Click on Add Gerber file
 
-<figure><img src="/gerber.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/gerber.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="/pcb color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb color.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
@@ -508,9 +508,9 @@ The enclosure was made in Fusion360. The enclosure consist of top and bottom par
 
 
 
-<figure><img src="/enclosure_top.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/enclosure_top.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="/enclosure_bottom.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/enclosure_bottom.png" alt=""><figcaption></figcaption></figure>
 
 
 
