@@ -1,9 +1,6 @@
 
 ### YouTube Video
-<iframe width="728" height="410" src="https://www.youtube.com/embed/buD-oxZESaU" title="YouTube video player" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-
+https://www.youtube.com/embed/buD-oxZESaU
 
 ## Introduction
 
@@ -34,7 +31,8 @@ Here is the breakdown of components needed for the Macro Keyboard (assuming you 
 The schematic diagram is available to view here. The design is straightforward as each button was connected to a GPIO pin to the Raspberry Pi Pico. The reason for not using a matrix is due to limited space on a 10 x 10 cm board size, which meant individual GPIO pins could be used. This also means that diodes are not needed to prevent ghosting effect when pressing the keys. The board is kept this dimension to minimize the total cost of the board. Any other shape of Layout can be achieved to fully customize your keyboard but keep it smaller then 10 x 10 cm for the PCB reduced the cost of the project.
 
 
-<figure><img src="/schematic_macro_joystick.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/schematic_macro_joystick.png" alt=""><figcaption></figcaption></figure>
+
 
 ## PCB Design
 
