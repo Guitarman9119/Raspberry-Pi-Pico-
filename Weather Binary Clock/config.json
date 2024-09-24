@@ -1,0 +1,8 @@
+{
+    "ssid": "ZX_seewo",
+    "ssid_password": "xwdp2022",
+    "query_interval_sec": 120,
+    "weather_api_key": "ce54c4b03cfc0bd0fc037188def2d98e",
+    "city": "Qingdao"
+    "country_code": "CN"
+}
