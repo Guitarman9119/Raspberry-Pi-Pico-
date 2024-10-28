@@ -75,8 +75,7 @@ sync_time_with_worldtimeapi_org(rtc)
 # Initialize Buzzer
 buzzer = machine.PWM(machine.Pin(15))
 
-
-def tone(pin,frequency,duration):
+def tone(pin, frequency, duration):
     pin.freq(frequency)
     pin.duty_u16(30000)
     utime.sleep_ms(duration)
@@ -93,9 +92,7 @@ for x in range(4):
 
 def format_time(value):
     """Format the hour or minute to be two digits."""
-    if value < 10:
-        return '0' + str(value)
-    return str(value)
+    return '0' + str(value) if value < 10 else str(value)
 
 def set_alarm():
     global set_hour, set_minute
@@ -120,9 +117,11 @@ def set_alarm():
                 utime.sleep(0.2)  # Debounce delay
         
         if Button[2].value() == 0:  # Decrement
-            if current_setting == "minute":
+            if current_setting == "hour":
+                set_hour = (set_hour - 1) % 24
+            else:
                 set_minute = (set_minute - 1) % 60
-                utime.sleep(0.2)  # Debounce delay
+            utime.sleep(0.2)  # Debounce delay
         
         if Button[3].value() == 0:  # Switch setting
             current_setting = "minute" if current_setting == "hour" else "hour"
@@ -131,19 +130,16 @@ def set_alarm():
         # Additional delay to prevent rapid switching
         utime.sleep(0.1)
 
-
-
 def check_alarm():
     global set_hour, set_minute
     Y, M, D, W, H, Min, S, SS = rtc.datetime()
-    if set_hour == H and set_minute == Min and set_second == S:
+    if set_hour == H and set_minute == Min:  # Check only hour and minute
         while True:
             lcd.clear()
             lcd.move_to(4, 0)
             lcd.putstr("Wake Up!")
-            tone(buzzer,440,250)
+            tone(buzzer, 440, 250)
             utime.sleep_ms(500)
-            utime.sleep(0.2)
             if Button[3].value() == 0:  # Press any button to stop alarm
                 buzzer.high()
                 break
