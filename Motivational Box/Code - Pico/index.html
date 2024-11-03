@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivational Box</title>
+    <link rel="stylesheet" href="./calendar_yearview_blocks.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./calendar_yearview_blocks.js"></script>
+    <style>
+        .calendar {
+            width: fit-content;
+        }
+
+        hr {
+            border-top: 5px solid;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        .container {
+            margin: 15px 15px 15px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Motivational Box</h1>
+        <hr>
+        <div id="main" class="container"></div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="noteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><span id="cid"></span> - <span id="noteTitle"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" name="" id="noteBody" rows="10"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="noteDel">Del</button>
+                    <button type="button" class="btn btn-success" id="noteSubmint">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let data = [];
+    function repaint() {
+        let main = document.getElementById("main");
+        main.innerHTML = "";
+        data.forEach(function (value, index) {
+            let now = document.createElement('h2');
+            now.innerText = value.name;
+            main.appendChild(now);
+
+            now = document.createElement('div');
+            now.className = "calendar";
+            main.appendChild(now);
+
+            let tmp = {};
+            Object.keys(value.data).forEach(function (index2) {
+                let value2 = value.data[index2];
+                tmp[index2] = {
+                    "items": [value2.note],
+                    "color": value2.color ? value2.color : "green",
+                }
+            })
+
+            $(now).calendar_yearview_blocks({
+                cid: index,
+                data: tmp,
+                start_monday: true,
+                always_show_tooltip: true,
+                colors: {
+                    'default': '#eeeeee',
+                }
+            });
+        });
+    }
+    $(document).ready(function () {
+        $.get("./data.json", function (res) {
+            data = res;
+            repaint();
+        });
+    });
+    document.getElementById("noteSubmint").onclick = function () {
+        let cid = document.getElementById("cid").innerText - 1;
+        data[cid].data[document.getElementById("noteTitle").innerText] = { "note": document.getElementById("noteBody").value };
+        repaint();
+        $.ajax({
+            url: './new_or_change/',
+            type: 'POST',
+            dataType: 'json',
+            data: { 
+                cid: cid,
+                date: document.getElementById("noteTitle").innerText, 
+                note: document.getElementById("noteBody").value 
+            },
+            success: function(response) {
+            },
+            error: function(xhr, status, error) {
+                alert("ERROR "+error);
+            }
+        });
+        $("#noteModal").modal('hide');
+    }
+    document.getElementById("noteDel").onclick = function(){
+        let cid = document.getElementById("cid").innerText - 1;
+        delete data[cid].data[document.getElementById("noteTitle").innerText];
+        repaint();
+        $.ajax({
+            url: './del/',
+            type: 'POST',
+            dataType: 'json',
+            data: { 
+                cid: cid,
+                date: document.getElementById("noteTitle").innerText,
+            },
+            success: function(response) {
+            },
+            error: function(xhr, status, error) {
+                alert("ERROR "+error);
+            }
+        });
+        $("#noteModal").modal('hide');
+    }
+
+</script>
+
+</html>
