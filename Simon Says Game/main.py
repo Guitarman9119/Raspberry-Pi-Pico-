@@ -113,3 +113,4 @@ while True:
     idle_mode()  # Start in idle mode
     time.sleep(1)  # Wait for 1 second before starting the game
     play_game()  # Start the game when a button is pressed
+
