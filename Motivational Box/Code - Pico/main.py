@@ -132,12 +132,23 @@ def sync_ntp():
 
 print("Start listen button.\n-----------------")
 
+def update_leds(tid):
+    for i in range(numpix):
+        strip.set_pixel(i, red)
+
+    led_range = task_led_ranges[tid]
+    color = green if status else red
+    for j in range(led_range[0], led_range[1] + 1):
+        strip.set_pixel(j, color)
+ 
+    strip.show()
+
 while True:
     for i, pin in enumerate(task_pins):
         if pin.value() == 1:
             print("Button press", i)
+            update_leds(i)
             tmp = json.loads(read_file("data.json"))
             tmp[i]["data"][sync_ntp()] = {}
             write_file("data.json", json.dumps(tmp))
             print("----------ok----------")
-           # update_leds()
