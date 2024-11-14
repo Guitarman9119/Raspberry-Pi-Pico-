@@ -1,12 +1,9 @@
 import utime
 from machine import Pin, I2C, RTC
-from ssd1306 import SSD1306_I2C
+import json
 import urequests
 import network
-import json
-import time
-
-
+from ssd1306 import SSD1306_I2C
 
 # Load configuration
 with open('config.json') as f:
@@ -14,19 +11,21 @@ with open('config.json') as f:
 
 # Check config.json has updated credentials
 if config['ssid'] == 'Enter_Wifi_SSID':
-    assert False, ("config.json has not been updated with your unique keys and data")
+    raise ValueError("config.json has not been updated with your unique keys and data")
 
 # Your OpenWeatherMap API details
 weather_api_key = config['weather_api_key']
 city = config['city']
 country_code = config['country_code']
+date_time_api = config['date_time_api']
+timezone = config['time_zone']
 
 # Create WiFi connection and turn it on
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 
 # Connect to WiFi router
-print("Connecting to WiFi: {}".format(config['ssid']))
+print("Connecting to WiFi:", config['ssid'])
 wlan.connect(config['ssid'], config['ssid_password'])
 
 # Wait until WiFi is connected
@@ -35,53 +34,53 @@ while not wlan.isconnected():
 
 print("Connected to Wi-Fi:", wlan.ifconfig())
 
-# Function to sync time with worldtimeapi.org
-def sync_time_with_worldtimeapi_org(rtc, blocking=True):
-    TIME_API = "http://worldtimeapi.org/api/timezone/Asia/Shanghai"
+# Function to sync time with IP Geolocation API
+def sync_time_with_ip_geolocation_api(rtc):
+    url = f'http://api.ipgeolocation.io/timezone?apiKey={date_time_api}&tz={timezone}'
+    response = urequests.get(url)
+    data = response.json()
 
-    response = None
-    while True:
-        try:
-            response = urequests.get(TIME_API)
-            break
-        except:
-            if blocking:
-                response.close()
-                continue
-            else:
-                response.close()
-                return
+    # Print the full response to debug
+    print("API Response:", data)
 
-    json_data = response.json()
-    current_time = json_data["datetime"]
-    the_date, the_time = current_time.split("T")
-    year, month, mday = [int(x) for x in the_date.split("-")]
-    the_time = the_time.split(".")[0]
-    hours, minutes, seconds = [int(x) for x in the_time.split(":")]
+    if 'date_time' in data and 'timezone' in data:
+        current_time = data["date_time"]
+        print("Current Time String:", current_time)  # Debug print
 
-    week_day = json_data["day_of_week"]
-    response.close()
-    rtc.datetime((year, month, mday, week_day, hours, minutes, seconds, 0))
+        # Split the date and time directly from the returned format
+        if " " in current_time:
+            the_date, the_time = current_time.split(" ")
+            year, month, mday = map(int, the_date.split("-"))
+            hours, minutes, seconds = map(int, the_time.split(":"))
+
+            week_day = data.get("day_of_week", 0)  # Default to 0 if not available
+            rtc.datetime((year, month, mday, week_day, hours, minutes, seconds, 0))
+            print("RTC Time After Setting:", rtc.datetime())
+        else:
+            print("Error: Unexpected time format:", current_time)
+    else:
+        print("Error: The expected data is not present in the response.")
+
 
 # Function to fetch weather data
 def fetch_weather():
     open_weather_map_url = f"http://api.openweathermap.org/data/2.5/weather?q={city},{country_code}&appid={weather_api_key}&units=metric"
+    print("Fetching weather data from:", open_weather_map_url)
+    
     try:
-        print("Fetching weather data from:", open_weather_map_url)
         weather_data = urequests.get(open_weather_map_url)
-
         if weather_data.status_code == 200:
             weather_json = weather_data.json()
             print("Weather Data:", weather_json)
 
             # Extracting relevant weather information
             return {
-                'location': weather_json.get('name') + ' - ' + weather_json.get('sys').get('country'),
-                'description': weather_json.get('weather')[0].get('main'),
-                'temperature': weather_json.get('main').get('temp'),
-                'pressure': weather_json.get('main').get('pressure'),
-                'humidity': weather_json.get('main').get('humidity'),
-                'wind_speed': weather_json.get('wind').get('speed'),
+                'location': f"{weather_json['name']} - {weather_json['sys']['country']}",
+                'description': weather_json['weather'][0]['main'],
+                'temperature': weather_json['main']['temp'],
+                'pressure': weather_json['main']['pressure'],
+                'humidity': weather_json['main']['humidity'],
+                'wind_speed': weather_json['wind']['speed'],
             }
         else:
             print("Weather API Error:", weather_data.status_code, weather_data.text)
@@ -89,20 +88,21 @@ def fetch_weather():
         print("An error occurred while fetching weather data:", str(e))
     return None
 
+# Initialize RTC and sync time
 rtc = RTC()
-sync_time_with_worldtimeapi_org(rtc)
+sync_time_with_ip_geolocation_api(rtc)
 
 # Define the GPIO pins for the LEDs
-hour_pins = [Pin(pin, Pin.OUT) for pin in [0, 1]]  # 2 bits for hours (0-1)
-hour_pins_ext = [Pin(pin, Pin.OUT) for pin in [2, 3, 4, 5]]  # 4 bits for hours (2-5)
-minute_pins = [Pin(pin, Pin.OUT) for pin in [6, 7, 8]]  # 3 bits for first minute (0-7)
-minute_pins_ext = [Pin(pin, Pin.OUT) for pin in [9, 10, 11, 12]]  # 4 bits for second minute (0-9)
-second_pins = [Pin(pin, Pin.OUT) for pin in [13, 14, 15]]  # 3 bits for first second (0-7)
-second_pins_ext = [Pin(pin, Pin.OUT) for pin in [16, 17, 18, 19]]  # 4 bits for second second (0-9)
+hour_pins = [Pin(pin, Pin.OUT) for pin in [1, 0]]  # 2 bits for hours (0-1)
+hour_pins_ext = [Pin(pin, Pin.OUT) for pin in [11, 4, 3, 2]]  # 4 bits for hours (2-5)
+minute_pins = [Pin(pin, Pin.OUT) for pin in [8, 7, 6]]  # 3 bits for first minute (0-7)
+minute_pins_ext = [Pin(pin, Pin.OUT) for pin in [21, 20, 10, 9]]  # 4 bits for second minute (0-9)
+second_pins = [Pin(pin, Pin.OUT) for pin in [15, 14, 13]]  # 3 bits for first second (0-7)
+second_pins_ext = [Pin(pin, Pin.OUT) for pin in [12, 5, 19, 18]]  # 4 bits for second second (0-9)
 
 # Function to update the LEDs based on the current time
 def update_leds():
-    Y, M, D, W, H, Min, S, SS = rtc.datetime()  # Changed M to Min to avoid conflict
+    Y, M, D, W, H, Min, S, SS = rtc.datetime()
     print("Time:", H, ":", Min, ":", S)
 
     hour_msb = H // 10
@@ -112,42 +112,41 @@ def update_leds():
     second_msb = S // 10
     second_lsb = S % 10
 
-    hour_msb_binary = '{0:02b}'.format(hour_msb)
-    hour_lsb_binary = '{0:04b}'.format(hour_lsb)
-    hour_pins[0].value(int(hour_msb_binary[0]))
-    hour_pins[1].value(int(hour_msb_binary[1]))
+    # Update hour pins
+    hour_pins[0].value(hour_msb)
+    hour_pins[1].value(hour_lsb)
     for i in range(4):
-        hour_pins_ext[i].value(int(hour_lsb_binary[i]))
+        hour_pins_ext[i].value((hour_lsb >> (3 - i)) & 1)
 
-    minute_msb_binary = '{0:03b}'.format(minute_msb)
-    minute_lsb_binary = '{0:04b}'.format(minute_lsb)
+    # Update minute pins
     for i in range(3):
-        minute_pins[i].value(int(minute_msb_binary[i]))
+        minute_pins[i].value((minute_msb >> (2 - i)) & 1)
     for i in range(4):
-        minute_pins_ext[i].value(int(minute_lsb_binary[i]))
+        minute_pins_ext[i].value((minute_lsb >> (3 - i)) & 1)
 
-    second_msb_binary = '{0:03b}'.format(second_msb)
-    second_lsb_binary = '{0:04b}'.format(second_lsb)
+    # Update second pins
     for i in range(3):
-        second_pins[i].value(int(second_msb_binary[i]))
+        second_pins[i].value((second_msb >> (2 - i)) & 1)
     for i in range(4):
-        second_pins_ext[i].value(int(second_lsb_binary[i]))
-
+        second_pins_ext[i].value((second_lsb >> (3 - i)) & 1)
 
 # OLED display dimensions
 WIDTH = 128
 HEIGHT = 64
+
 # Initialize I2C and OLED display
 i2c = I2C(0, scl=Pin(17), sda=Pin(16), freq=400000)
 display = SSD1306_I2C(WIDTH, HEIGHT, i2c)
 
-
 # Function to update the OLED display with weather data
 def update_display(weather_data):
     display.fill(0)  # Clear the display
-    display.text('{}'.format(weather_data['location']), 0, 0)
-    display.text('Temp: {} C'.format(weather_data['temperature']), 0, 10)
-    display.text('Desc: {}'.format(weather_data['description']), 0, 20)
+    display.text('NerdCave Clock', 0, 0)
+    display.text('Weather Data', 0, 10)
+    display.text(weather_data['location'], 0, 20)
+    display.text(f'Temp: {weather_data["temperature"]} C', 0, 30)
+    display.text(f'Desc: {weather_data["description"]}', 0, 40)
+    display.text(f'Humidity: {weather_data["humidity"]}%', 0, 50)
     display.show()  # Update the display
 
 # Fetch initial weather data
@@ -167,4 +166,5 @@ while True:
             update_display(weather_data)  # Update the display with new weather data
             last_weather_update = utime.time()  # Reset the timer
     
-    time.sleep(1)
+    utime.sleep(1)
+
