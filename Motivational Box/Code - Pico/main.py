@@ -2,9 +2,13 @@ import rp2
 import network
 import ubinascii
 import time
+import utime
 import socket
+import ntptime
 import json
 from microhttp import WebServer
+from neopixel import Neopixel
+from machine import Pin, RTC, SPI
 
 # ----------------Begin Network---------------- #
 rp2.country('CN')
@@ -14,8 +18,8 @@ wlan.active(True)
 mac = ubinascii.hexlify(network.WLAN().config('mac'),':').decode()
 print('MAC ' + mac)
 
-ssid = 'ssid'
-psw = 'password'
+ssid = 'ZX_seewo'
+psw = 'xwdp2022'
 
 wlan.connect(ssid, psw)
 
@@ -55,31 +59,6 @@ def index(request,response):
     response.content_type='text/html'
     return read_file("index.html")
 
-@app.get('/bootstrap.min.css')
-def staticfile(request,response):
-    response.content_type='text/css'
-    return read_file("bootstrap.min.css")
-
-@app.get('/bootstrap.min.js')
-def staticfile(request,response):
-    response.content_type='text/javascript'
-    return read_file("bootstrap.min.js")
-
-@app.get('/calendar_yearview_blocks.css')
-def staticfile(request,response):
-    response.content_type='text/css'
-    return read_file("calendar_yearview_blocks.css")
-
-@app.get('/calendar_yearview_blocks.js')
-def staticfile(request,response):
-    response.content_type='text/javascript'
-    return read_file("calendar_yearview_blocks.js")
-
-@app.get('/jquery-3.7.1.min.js')
-def staticfile(request,response):
-    response.content_type='text/javascript'
-    return read_file("jquery-3.7.1.min.js")
-
 @app.get('/data.json')
 def getdata(request,response):
     return read_file("data.json")
@@ -98,4 +77,78 @@ def delrecord(request,response):
     write_file("data.json", json.dumps(tmp))
     return '{"msg": "ok"}'
 
-app.run(blocked=True,port=80)
+app.run(blocked=False,port=80)
+
+# ---------------LED and Button---------------#
+
+# Initialize neopixel strip and set colors
+numpix = 10
+strip = Neopixel(numpix, 0, 0, "GRB")
+blank = (0, 0, 0)
+red = (255, 0, 0)
+orange = (255, 50, 0)
+yellow = (255, 150, 0)
+green = (0, 255, 0)
+blue = (0, 100, 255)
+indigo = (100, 0, 90)
+violet = (200, 0, 100)
+white = (255,255,255)
+ 
+# Set strip brightness
+strip.brightness(100)
+ 
+# Define the pin numbers for the buttons
+button_pins = [1, 2, 3, 4, 5]
+task_names = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5']
+
+# Define the LED ranges for each task
+task_led_ranges = [[8,9], [6,7], [4,5], [2,3],[0, 1]]
+ 
+# Define the pin objects for the buttons
+task_pins = [Pin(pin, Pin.IN, Pin.PULL_DOWN) for pin in button_pins]
+
+# NTP SERVER
+NTP_SERVER = "ntp.aliyun.com"
+
+# ----------- Get Time --------------- #
+def sync_ntp():
+    print("Start Sync NTP Time")
+    rtc = RTC()
+    try:
+        ntptime.NTP_DELTA = 3155644800
+        ntptime.host = NTP_SERVER
+        ntptime.settime()
+        localtime_now=time.time()+8*3600
+        localtime_now=time.localtime(localtime_now)
+        rtc.datetime((localtime_now[0],localtime_now[1],localtime_now[2],localtime_now[6],localtime_now[3],localtime_now[4],localtime_now[5],localtime_now[7]))
+    except Exception as e:
+        print("Sync NTP time error",repr(e))
+    
+    localtime_now=time.localtime()
+    
+    print("localtime_now","{}-{}-{}".format(localtime_now[0],localtime_now[1],localtime_now[2]))
+    return "{}-{}-{}".format(localtime_now[0],localtime_now[1],localtime_now[2])
+# ----------- End Get Time --------------- #
+
+print("Start listen button.\n-----------------")
+
+def update_leds(tid):
+    for i in range(numpix):
+        strip.set_pixel(i, red)
+
+    led_range = task_led_ranges[tid]
+    color = green if status else red
+    for j in range(led_range[0], led_range[1] + 1):
+        strip.set_pixel(j, color)
+ 
+    strip.show()
+
+while True:
+    for i, pin in enumerate(task_pins):
+        if pin.value() == 1:
+            print("Button press", i)
+            update_leds(i)
+            tmp = json.loads(read_file("data.json"))
+            tmp[i]["data"][sync_ntp()] = {}
+            write_file("data.json", json.dumps(tmp))
+            print("----------ok----------")
