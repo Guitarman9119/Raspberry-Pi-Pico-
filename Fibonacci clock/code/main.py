@@ -23,8 +23,8 @@ strip5 = Neopixel(numpix5, 4, 4, "GRB")  # Strip 5 connected to GPIO 32
 # Define colors
 red = (255, 0, 0)      # Hours color
 blue = (0, 0, 255)     # Minutes color
-purple = (0, 255, 0) # Both hours and minutes color
-black = (255, 255, 255)      # Off color
+green = (0, 255, 0) # Both hours and minutes color
+white = (255, 255, 255)      # Off color
 
 # Set brightness for all strips
 strip1.brightness(255)
@@ -33,10 +33,31 @@ strip3.brightness(255)
 strip4.brightness(255)
 strip5.brightness(255)
 
+# Load configuration
+with open('config.json') as f:
+    config = json.load(f)
+
+# Check config.json has updated credentials
+if config['ssid'] == 'Enter_Wifi_SSID':
+    raise ValueError("config.json has not been updated with your unique keys and data")
+
+# Your OpenWeatherMap API details
+weather_api_key = config['weather_api_key']
+city = config['city']
+country_code = config['country_code']
+date_time_api = config['date_time_api']
+timezone = config['time_zone']
+
+
 # Wi-Fi Configuration
 def connect_wifi():
     with open('config.json') as f:
         config = json.load(f)
+        weather_api_key = config['weather_api_key']
+        city = config['city']
+        country_code = config['country_code']
+        date_time_api = config['date_time_api']
+        timezone = config['time_zone']
 
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
@@ -47,38 +68,39 @@ def connect_wifi():
         utime.sleep(1)
 
     print("Connected to Wi-Fi:", wlan.ifconfig())
+    
+        
+# Function to sync time with IP Geolocation API
+def sync_time_with_ip_geolocation_api(rtc):
+    url = f'http://api.ipgeolocation.io/timezone?apiKey={date_time_api}&tz={timezone}'
+    response = urequests.get(url)
+    data = response.json()
 
-# Function to sync time with worldtimeapi.org
-def sync_time_with_worldtimeapi_org(rtc):
-    TIME_API = "http://worldtimeapi.org/api/timezone/Asia/Shanghai"  # Change to your timezone
+    # Print the full response to debug
+    print("API Response:", data)
 
-    try:
-        response = urequests.get(TIME_API)
-        if response.status_code == 200:
-            json_data = response.json()
-            print("Time API Response:", json_data)  # Print the response for debugging
-            
-            current_time = json_data.get("datetime")
-            if current_time is None:
-                print("Error: 'datetime' not found in response.")
-                return
-            
-            the_date, the_time = current_time.split("T")
-            year, month, mday = [int(x) for x in the_date.split("-")]
-            the_time = the_time.split(".")[0]
-            hours, minutes, seconds = [int(x) for x in the_time.split(":")]
-            
-            week_day = json_data.get("day_of_week")
-            if week_day is None:
-                print("Error: 'day_of_week' not found in response.")
-                return
-            
+    if 'date_time' in data and 'timezone' in data:
+        current_time = data["date_time"]
+        print("Current Time String:", current_time)  # Debug print
+
+        # Split the date and time directly from the returned format
+        if " " in current_time:
+            the_date, the_time = current_time.split(" ")
+            year, month, mday = map(int, the_date.split("-"))
+            hours, minutes, seconds = map(int, the_time.split(":"))
+
+            week_day = data.get("day_of_week", 0)  # Default to 0 if not available
             rtc.datetime((year, month, mday, week_day, hours, minutes, seconds, 0))
-            response.close()  # Close the response after successful use
+            print("RTC Time After Setting:", rtc.datetime())
         else:
-            print("Error fetching time:", response.status_code)
-    except Exception as e:
-        print("Error fetching time:", e)
+            print("Error: Unexpected time format:", current_time)
+    else:
+        print("Error: The expected data is not present in the response.")
+        
+# Initialize RTC (Real-Time Clock)
+rtc = RTC()
+connect_wifi()  # Connect to Wi-Fi
+sync_time_with_ip_geolocation_api(rtc)  # Sync time from the API
 
 # Fibonacci time function
 def fib_time(hours, minutes):
@@ -107,17 +129,14 @@ def fib_time(hours, minutes):
 
     return state
 
-# Initialize RTC (Real-Time Clock)
-rtc = RTC()
-connect_wifi()  # Connect to Wi-Fi
-sync_time_with_worldtimeapi_org(rtc)  # Sync time from the API
+
 
 # Main loop to update the NeoPixel LEDs based on the current time
 while True:
     current_time = rtc.datetime()
     hours = current_time[4]%12  # Get hours
     minutes = current_time[5]  # Get minutes
-    print(hours)
+    print(hours,minutes)
     state = fib_time(hours, minutes)
     
     print(state)
@@ -138,9 +157,9 @@ while True:
         elif state[i] == 2:  # Minute representation
             # Light up the strip corresponding to the Fibonacci value for minutes
             if i == 0:  # 1 minute
-                strip1.fill(black)
+                strip1.fill(blue)
             elif i == 1:  # 1 minute
-                strip2.fill(black)
+                strip2.fill(blue)
             elif i == 2:  # 2 minutes
                 strip3.fill(blue)
             elif i == 3:  # 3 minutes
@@ -150,26 +169,26 @@ while True:
         elif state[i] == 3:  # Both hour and minute representation
             # Light up the strip corresponding to the Fibonacci value for both
             if i == 0:  # 1 hour and 1 minute
-                strip1.fill(purple)
+                strip1.fill(green)
             elif i == 1:  # 1 hour and 1 minute
-                strip2.fill(purple)
+                strip2.fill(green)
             elif i == 2:  # 2 hour and 2 minute
-                strip3.fill(purple)
+                strip3.fill(green)
             elif i == 3:  # 3 hour and 3 minute
-                strip4.fill(purple)
+                strip4.fill(green)
             elif i == 4:  # 5 hour and 5 minute
-                strip5.fill(purple)
+                strip5.fill(green)
         else:  # Not used
             if i == 0:
-                strip1.fill(black)
+                strip1.fill(white)
             elif i == 1:
-                strip2.fill(black)
+                strip2.fill(white)
             elif i == 2:
-                strip3.fill(black)
+                strip3.fill(white)
             elif i == 3:
-                strip4.fill(black)
+                strip4.fill(white)
             elif i == 4:
-                strip5.fill(black)
+                strip5.fill(white)
         
         # Show the updates
     strip1.show()
@@ -179,6 +198,7 @@ while True:
     strip5.show()
     utime.sleep(1)
     
+
 
 
 
