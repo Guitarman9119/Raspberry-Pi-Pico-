@@ -1,21 +1,9 @@
----
-title: "Fibonnaci Clock"
-description: "Raspberry Pi Pico W - Fibonnaci Clock"
-lead: ""
-date: 2020-10-06T08:48:57+00:00
-lastmod: 2020-10-06T08:48:57+00:00
-draft: false
-images: []
-menu:
-weight: 501
----
-
 ## Introduction
 
 Welcome to this tutorial on creating a Fibonacci Clock with the Raspberry Pi Pico W. The Fibonacci sequence is a series of numbers where each number is the sum of the two previous numbers. The first five numbers in the sequence are 1, 1, 2, 3, and 5. Using this sequence we can create a clock to show the the time in hours and minutes in increments of 5. 
 
 
-<figure><img src="/fib1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/fib1.png" alt=""><figcaption></figcaption></figure>
 
 
 The screen of the clock is made up of five squares whose side lengths match the first five Fibonacci numbers: 1, 1, 2, 3 and 5. The hours are displayed using red and the minutes using green. When a square is used to display both the hours and minutes it turns blue. White squares are ignored. To tell time on the Fibonacci clock you need to do some math. To read the hour, simply add up the corresponding values of the red and blue squares. To read the minutes, do the same with the green and blue squares. The minutes are displayed in 5 minute increments (0 to 12) so you have to multiply your result by 5 to get the actual number.
@@ -36,7 +24,7 @@ Here is the breakdown of components needed for the Macro Keyboard (assuming you 
 
 The schematic diagram was created using EasyEDA. All components used are through-hole types, making the soldering process easier and more accessible. The PCB allows us to easily connect the 5 different WS2812 neopixel LEDs to the Pico.  
 
-<figure><img src="/ws2182_led_controller.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/ws2182_led_controller.png" alt=""><figcaption></figcaption></figure>
 
 ## PCB Design
 
@@ -49,7 +37,7 @@ Features of PCB
 
 ### PCB Top:
 
-<figure><img src="/ws2818_pcb.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/ws2818_pcb.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -65,15 +53,15 @@ Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pi
 
 Click on Add Gerber file
 
-<figure><img src="/gerber.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/gerber.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="/pcb color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb color.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
@@ -308,9 +296,9 @@ The STL files are available [here](https://github.com/Guitarman9119/Raspberry-Pi
 
 
 
-<figure><img src="/fib_3D_main.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/fib_3D_main.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="/fib_3D_insert.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/fib_3D_insert.png" alt=""><figcaption></figcaption></figure>
 
 
 
