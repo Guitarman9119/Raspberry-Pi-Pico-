@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pico Alarm Clock Setting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Pico Alarm Clock Setting</h1>
+            <div class="box">
+                <div class="field">
+                    <label class="label">Set Hour</label>
+                    <div class="control has-icons-left">
+                        <input 
+                            class="input" 
+                            type="number" 
+                            id="hourInput" 
+                            min="0" 
+                            max="23" 
+                            placeholder="Hour"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Set Minutes</label>
+                    <div class="control has-icons-left">
+                        <input 
+                            class="input" 
+                            type="number" 
+                            id="minuteInput" 
+                            min="0" 
+                            max="59" 
+                            placeholder="Minutes"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Set Seconds</label>
+                    <div class="control has-icons-left">
+                        <input 
+                            class="input" 
+                            type="number" 
+                            id="secondsInput" 
+                            min="0" 
+                            max="59" 
+                            placeholder="Seconds"
+                            required
+                        >
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-stopwatch"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button id="submitButton" class="button is-primary is-fullwidth">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const hourValue = document.getElementById('hourInput').value;
+            const minuteValue = document.getElementById('minuteInput').value;
+            const secondsValue = document.getElementById('secondsInput').value;
+
+            if (hourValue === "" || minuteValue === "" || secondsValue === "") {
+                alert('Please fill out hour, minute, and second fields.');
+                return;
+            }
+
+            fetch('/change_time/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ hour: hourValue, minute: minuteValue, seconds: secondsValue }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Time updated successfully!');
+                } else {
+                    alert('Failed to update time.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the time.');
+            });
+        });
+    </script>
+</body>
+</html>

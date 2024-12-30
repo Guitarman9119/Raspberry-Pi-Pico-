@@ -196,6 +196,31 @@ lcd.putstr("  Version 1.0   ")
 utime.sleep(4)
 lcd.clear()
 
+############################ WEB SERVER #######################
+def read_file(filename):
+    tmp = ""
+    with open(filename, "r") as fp:
+        tmp = fp.read()
+    return tmp
+
+app = WebServer()
+
+@app.get('/')
+def index(request,response):
+    response.content_type='text/html'
+    return read_file("index.html")
+
+@app.post('/change_time/')
+def new_or_change(request,response):
+    set_hour = request.body_param["hour"]
+    set_minute = request.body_param["minute"]
+    set_second = request.body_param["seconds"]
+    return '{"msg": "ok"}'
+
+app.run(blocked=False,port=80)
+
+###################### END WEB SERVER ####################
+
 while True:
     
     strip.rotate_right(1)
