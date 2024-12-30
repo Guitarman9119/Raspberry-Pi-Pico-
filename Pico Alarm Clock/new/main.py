@@ -5,6 +5,7 @@ import network
 import urequests
 from lcd_api import LcdApi
 from pico_i2c_lcd import I2cLcd
+from microhttp import WebServer
 
 # LCD Setup
 I2C_ADDR = 63
