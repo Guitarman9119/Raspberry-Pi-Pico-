@@ -196,6 +196,7 @@ lcd.putstr("  Version 1.0   ")
 utime.sleep(4)
 lcd.clear()
 
+
 while True:
     
     strip.rotate_right(1)
