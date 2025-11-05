@@ -161,13 +161,14 @@ while True:
 The enclosure was designed in Fusion 360.
 <figure><img src="images/ws2182_dice_enclosure.png" alt=""><figcaption></figcaption></figure>
 
-You can download all the 3D files here: [https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Pico%20Dice/3D%20model](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/Pico%20Dice/3D%20model)
+You can download all the 3D files here: [https://github.com/Guitarman9119/Raspberry-Pi-Pico-/tree/main/WS2812B%20Dice/STL)
 
 ## Conclusion
 
 This is a simple but fun project, and it makes a great introduction for beginners learning soldering, coding, and 3D modeling.
 
 If you have any questions, feel free to leave a comment on my YouTube video. And while you’re there, consider subscribing to the channel to support more open-source projects like this one.
+
 
 
 
