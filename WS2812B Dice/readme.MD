@@ -59,7 +59,7 @@ The PCB was manufactured by JLCPCB, who offer high-quality boards at low cost, o
 
 Ordering the PCB is very simple:
 
-Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/raw/main/Pico%20Dice/Pico%20Dice%20Gerber.zip).
+Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/raw/refs/heads/main/WS2812B%20Dice/WS2812b%20Dice.zip).
 
 Click on Add Gerber file
 
@@ -168,6 +168,7 @@ You can download all the 3D files here: [https://github.com/Guitarman9119/Raspbe
 This is a simple but fun project, and it makes a great introduction for beginners learning soldering, coding, and 3D modeling.
 
 If you have any questions, feel free to leave a comment on my YouTube video. And while you’re there, consider subscribing to the channel to support more open-source projects like this one.
+
 
 
 
