@@ -1,4 +1,4 @@
-#Raspberry Pi Pico WS2812B Dice"
+# Raspberry Pi Pico WS2812B Dice
 
 ### YouTube Video
 <iframe width="728" height="410" src="https://www.youtube.com/embed/xxxxxxxxxxxx" title="YouTube video player" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -170,4 +170,5 @@ You can download all the 3D files here: [https://github.com/Guitarman9119/Raspbe
 This is a simple but fun project, and it makes a great introduction for beginners learning soldering, coding, and 3D modeling.
 
 If you have any questions, feel free to leave a comment on my YouTube video. And while you’re there, consider subscribing to the channel to support more open-source projects like this one.
+
 
