@@ -1,21 +1,3 @@
-
----
-title: "Binary Clock / Weather Monitor"
-description: "WS2812B LED Controller based on the Raspberry Pi Pico and ESP8266 D1 Mini"
-lead: ""
-date: 2023-10-12T08:48:57+00:00
-lastmod: 2023-10-12T08:48:57+00:00
-draft: false
-images: []
-menu:
-weight: 9
-
----
-### YouTube Video
-<iframe width="728" height="410" src="https://www.youtube.com/embed/hAAY1Tiw1yg" title="YouTube video player" frameborder="10" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-
 ## Introduction
 
 Welcome to this tutorial on creating a Binary Clock and Weather monitor using the Raspberry Pi Pico W. This tutorial is broken into two parts. The first part will focus on building a prototype on breadboard and second part will focus on creating a custom PCB with a 3D printed enclosure. The project will use the openweater.org API and worldtime clock API to collect the time and weather data.
@@ -40,7 +22,7 @@ The following is the list of components needed:
 
 The Fritzing diagram is shown below, since we have limited space on the breadboard we will just display hours and minutes in binary.
 
-<figure><img src="/PCB_Project1_Fritzing.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/PCB_Project1_Fritzing.png" alt=""><figcaption></figcaption></figure>
 
 An important note when making the connections check the pins on the OLED display as some modules the GND and VCC pins are changed.
 
@@ -884,7 +866,7 @@ This design includes several key features:
 
 ### PCB Top:
 
-<figure><img src="/weather_pcb.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/weather_pcb.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -900,22 +882,22 @@ Download the Gerber file [here](https://github.com/Guitarman9119/Raspberry-Pi-Pi
 
 Click on Add Gerber file
 
-<figure><img src="/gerber.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/gerber.png" alt=""><figcaption></figcaption></figure>
 
 leave all the settings as default given. You might want change the PCB color which you can do here:
 
-<figure><img src="/pcb color.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/pcb color.png" alt=""><figcaption></figcaption></figure>
 
 Enter you shipping details, save to cart
 
-<figure><img src="/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/Screenshot 2023-08-17 090943.png" alt=""><figcaption></figcaption></figure>
 
 Then after a few days depending on your location you will receive your great quality PCB.
 
 
 ## Enclosure Design:
 
-<figure><img src="/weather_binary_enclosure.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="images/weather_binary_enclosure.png" alt=""><figcaption></figcaption></figure>
 
 Download STL file here: [download](https://github.com/Guitarman9119/Raspberry-Pi-Pico-/blob/main/Weather%20Binary%20Clock/Enclosure.stl).
 
