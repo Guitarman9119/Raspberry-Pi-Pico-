@@ -1,0 +1,11 @@
+{
+
+    "ssid": "Open_Internet",
+    "ssid_password": "25802580",
+    "query_interval_sec": 120,
+    "weather_api_key": "ce54c4b03cfc0bd0fc037188def2d98e",
+    "city": "Qingdao",
+    "country_code": "CN",
+    "date_time_api": "8b6ceff190af4db5b35c40cd616be597",
+    "time_zone": "Asia/Shanghai",
+}
