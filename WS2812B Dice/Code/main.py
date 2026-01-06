@@ -1,23 +1,35 @@
 from machine import Pin
-import neopixel
 import utime
 import urandom
-  
-# --- CONFIG ---
-NUM_LEDS = 14
-PIN_NUM = 11
-BRIGHTNESS = 1           # 0.0 = off, 1.0 = full brightness
-LEFT_COLOR = (0, 0, 255)     # Magenta
-RIGHT_COLOR = (255, 150, 255)  # Light pink
-RAINBOW_DELAY = 0.02
+from neopixel import Neopixel
 
-# --- SETUP ---
-np = neopixel.NeoPixel(Pin(PIN_NUM), NUM_LEDS)
 urandom.seed(utime.ticks_us())
 
-dice1_leds = list(range(0, 7))
-dice2_leds = list(range(7, 14))
+# ============================
+# NeoPixel Setup
+# ============================
+NUM_LEDS = 14
+PIN_NUM = 0
+STATE_MACHINE = 0
 
+np = Neopixel(NUM_LEDS, STATE_MACHINE, PIN_NUM, "GRB")
+np.brightness(80)  # 1–255
+
+# Dice layout
+DICE_LEN = 7
+DICE1_START = 0
+DICE2_START = 7
+
+OFF = (0, 0, 0)
+
+# ============================
+# Buttons (Pico: GP1/2/3)
+# ============================
+button1 = Pin(1, Pin.IN, Pin.PULL_DOWN)  # roll dice 1
+button2 = Pin(2, Pin.IN, Pin.PULL_DOWN)  # roll both
+button3 = Pin(3, Pin.IN, Pin.PULL_DOWN)  # roll dice 2
+
+# Dice pip patterns for 1–6 (7 LEDs per die)
 numbers = [
     [0, 0, 0, 1, 0, 0, 0],  # 1
     [1, 0, 0, 0, 0, 0, 1],  # 2
@@ -27,104 +39,165 @@ numbers = [
     [1, 1, 1, 0, 1, 1, 1],  # 6
 ]
 
-button1 = Pin(12, Pin.IN, Pin.PULL_DOWN)
-button2 = Pin(13, Pin.IN, Pin.PULL_DOWN)
-button3 = Pin(14, Pin.IN, Pin.PULL_DOWN)
 
-# --- HELPER FUNCTIONS ---
-def apply_brightness(color, brightness):
-    """Apply brightness scaling to any RGB color tuple."""
-    return tuple(int(c * brightness) for c in color)
+def show():
+    np.show()
 
-def wheel(pos):
-    """Generate rainbow colors across 0-255 positions."""
-    if pos < 85:
-        return (int(pos * 3), int(255 - pos * 3), 0)
-    elif pos < 170:
-        pos -= 85
-        return (int(255 - pos * 3), 0, int(pos * 3))
-    else:
-        pos -= 170
-        return (0, int(pos * 3), int(255 - pos * 3))
+def clear_all():
+    np.clear()
+    np.show()
 
-def rainbow_cycle(wait, brightness, cycles=1):
-    """Cycle rainbow colors across all LEDs with brightness scaling."""
-    for j in range(256 * cycles):
-        for i in range(NUM_LEDS):
-            rc_index = (i * 256 // NUM_LEDS) + j
-            color = wheel(rc_index & 255)
-            np[i] = apply_brightness(color, brightness)
-        np.write()
-        utime.sleep(wait)
-        # Exit rainbow if any button pressed
-        if button1.value() or button2.value() or button3.value():
-            return
+def clear_range(start, length):
+    for i in range(start, start + length):
+        np.set_pixel(i, OFF)
 
-def turn_off_leds(indices):
-    for i in indices:
-        np[i] = (0, 0, 0)
-    np.write()
-
-def show_number(indices, number, color, brightness):
+def show_number(start, number, color):
     pattern = numbers[number - 1]
-    adjusted = apply_brightness(color, brightness)
-    for i in range(len(indices)):
-        np[indices[i]] = adjusted if pattern[i] else (0, 0, 0)
-    np.write()
+    for i in range(DICE_LEN):
+        np.set_pixel(start + i, color if pattern[i] else OFF)
 
-def roll_animation_simultaneous(indices1, indices2, color1, color2, brightness):
-    """Roll both dice at the same time with different colors."""
-    delay = 0.02
-    rolls = urandom.randint(8, 14)
-    for _ in range(rolls):
-        num1 = urandom.randint(1, 6)
-        num2 = urandom.randint(1, 6)
-        show_number(indices1, num1, color1, brightness)
-        show_number(indices2, num2, color2, brightness)
-        utime.sleep(delay)
-        np.fill((0, 0, 0))
-        np.write()
-        delay += 0.03  # Gradually slow both down together
+def other_die_start(dice_start):
+    return DICE2_START if dice_start == DICE1_START else DICE1_START
 
-    # Final results
-    final1 = urandom.randint(1, 6)
-    final2 = urandom.randint(1, 6)
-    show_number(indices1, final1, color1, brightness)
-    show_number(indices2, final2, color2, brightness)
-    return final1, final2
 
-# --- MAIN LOOP ---
-try:
-    while True:
-        if button1.value():
-            utime.sleep(0.2)
-            if button1.value():
-                roll_animation_simultaneous(dice1_leds, [], LEFT_COLOR, RIGHT_COLOR, BRIGHTNESS)
-                utime.sleep(2)
-                turn_off_leds(dice1_leds)
+DEBOUNCE_MS = 60
+_last_press_ms = {1: 0, 2: 0, 3: 0}
+_last_state = {1: 0, 2: 0, 3: 0}
 
-        elif button2.value():
-            utime.sleep(0.2)
-            if button2.value():
-                roll_animation_simultaneous(dice1_leds, dice2_leds, LEFT_COLOR, RIGHT_COLOR, BRIGHTNESS)
-                utime.sleep(2)
-                turn_off_leds(dice1_leds)
-                turn_off_leds(dice2_leds)
+def _read_pin(btn: Pin) -> int:
+    return 1 if btn.value() else 0
 
-        elif button3.value():
-            utime.sleep(0.2)
-            if button3.value():
-                roll_animation_simultaneous([], dice2_leds, LEFT_COLOR, RIGHT_COLOR, BRIGHTNESS)
-                utime.sleep(2)
-                turn_off_leds(dice2_leds)
+def was_pressed(pin_num: int, btn: Pin) -> bool:
+    """
+    Returns True only on a rising edge (0->1), debounced.
+    """
+    now = utime.ticks_ms()
+    cur = _read_pin(btn)
+    prev = _last_state[pin_num]
+    _last_state[pin_num] = cur
 
-        else:
-            # Idle rainbow animation when no button pressed
-            rainbow_cycle(RAINBOW_DELAY, BRIGHTNESS, cycles=10)
+    if cur == 1 and prev == 0:
+        # rising edge
+        if utime.ticks_diff(now, _last_press_ms[pin_num]) > DEBOUNCE_MS:
+            _last_press_ms[pin_num] = now
+            return True
+    return False
 
-        
+def any_button_down():
+    return button1.value() or button2.value() or button3.value()
 
-except KeyboardInterrupt:
-    np.fill((0, 0, 0))
-    np.write()
-    print("Stopped")
+# ------------------------------------------------------------
+# Rainbow (idle animation)
+# ------------------------------------------------------------
+def wheel(pos):
+    pos = 255 - (pos & 255)
+    if pos < 85:
+        return (255 - pos * 3, 0, pos * 3)
+    if pos < 170:
+        pos -= 85
+        return (0, pos * 3, 255 - pos * 3)
+    pos -= 170
+    return (pos * 3, 255 - pos * 3, 0)
+
+def rainbow_step(offset):
+    for i in range(NUM_LEDS):
+        np.set_pixel(i, wheel((i * 256 // NUM_LEDS + offset) & 255))
+    np.show()
+
+# ------------------------------------------------------------
+# Dice Roll Animation
+# ------------------------------------------------------------
+def roll_animation(dice1=False, dice2=False,
+                   color1=(255, 255, 255), color2=(255, 0, 255),
+                   steps=16, start_delay_ms=40, end_delay_ms=180):
+    """
+    Shows quick changing faces and slows down near the end (ease-out).
+    """
+    for s in range(steps):
+        if dice1:
+            show_number(DICE1_START, urandom.randint(1, 6), color1)
+        if dice2:
+            show_number(DICE2_START, urandom.randint(1, 6), color2)
+
+        np.show()
+
+        delay = start_delay_ms + (end_delay_ms - start_delay_ms) * s // max(1, steps - 1)
+        utime.sleep_ms(delay)
+
+# ------------------------------------------------------------
+# Roll functions
+# ------------------------------------------------------------
+def roll_one(dice_start, color, hold_s=2, blank_other=True):
+    # Turn off the other die during the single roll (less distracting)
+    if blank_other:
+        clear_range(other_die_start(dice_start), DICE_LEN)
+        np.show()
+
+    roll_animation(
+        dice1=(dice_start == DICE1_START),
+        dice2=(dice_start == DICE2_START),
+        color1=color,
+        color2=color,
+        steps=16
+    )
+
+    final = urandom.randint(1, 6)
+    show_number(dice_start, final, color)
+    np.show()
+
+    utime.sleep(hold_s)
+
+    # Clear both dice after showing result
+    clear_range(dice_start, DICE_LEN)
+    if blank_other:
+        clear_range(other_die_start(dice_start), DICE_LEN)
+    np.show()
+
+def roll_both(color1=(0, 255, 0), color2=(255, 0, 255), hold_s=3):
+    roll_animation(dice1=True, dice2=True, color1=color1, color2=color2, steps=18)
+
+    d1 = urandom.randint(1, 6)
+    d2 = urandom.randint(1, 6)
+    show_number(DICE1_START, d1, color1)
+    show_number(DICE2_START, d2, color2)
+    np.show()
+
+    utime.sleep(hold_s)
+
+    clear_range(DICE1_START, DICE_LEN)
+    clear_range(DICE2_START, DICE_LEN)
+    np.show()
+
+# ============================================================
+# Main loop
+# ============================================================
+clear_all()
+
+rainbow_offset = 0
+last_idle_tick = utime.ticks_ms()
+IDLE_FRAME_MS = 40  # lower = faster rainbow
+
+while True:
+    # Idle animation (only when no buttons are held down)
+    if not any_button_down():
+        now = utime.ticks_ms()
+        if utime.ticks_diff(now, last_idle_tick) > IDLE_FRAME_MS:
+            last_idle_tick = now
+            rainbow_step(rainbow_offset)
+            rainbow_offset = (rainbow_offset + 2) & 255
+
+    # Button actions (edge-triggered)
+    if was_pressed(1, button1):
+        # Dice 1 only (other die off)
+        roll_one(DICE1_START, (255, 0, 255), hold_s=2, blank_other=True)
+
+    if was_pressed(2, button2):
+        # Both dice
+        roll_both(color1=(0, 255, 0), color2=(255, 0, 255), hold_s=3)
+
+    if was_pressed(3, button3):
+        # Dice 2 only (other die off)
+        roll_one(DICE2_START, (255, 0, 255), hold_s=2, blank_other=True)
+
+    utime.sleep_ms(5)
+
