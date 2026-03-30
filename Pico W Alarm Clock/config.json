@@ -1,0 +1,10 @@
+{
+    "ssid": "ssid",
+    "ssid_password": "ssid_password",
+    "query_interval_sec": 120,
+    "weather_api_key": "weather_api_key",
+    "city": "city",
+    "country_code": "country_code",
+    "date_time_api": "date_time_api",
+    "time_zone": "time_zone"
+} 

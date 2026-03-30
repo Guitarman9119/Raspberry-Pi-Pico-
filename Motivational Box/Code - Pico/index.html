@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motivational Box</title>
-    <link rel="stylesheet" href="./calendar_yearview_blocks.css">
-    <link rel="stylesheet" href="./bootstrap.min.css">
-    <script src="./jquery-3.7.1.min.js"></script>
-    <script src="./bootstrap.min.js"></script>
-    <script src="./calendar_yearview_blocks.js"></script>
+    <link rel="stylesheet" href="https://lzh.qdzx.net.cn/static/2024/static/calendar_yearview_blocks.css">
+    <link rel="stylesheet" href="https://lzh.qdzx.net.cn/static/2024/static/bootstrap.min.css">
+    <script src="https://lzh.qdzx.net.cn/static/2024/static/jquery-3.7.1.min.js"></script>
+    <script src="https://lzh.qdzx.net.cn/static/2024/static/bootstrap.min.js"></script>
+    <script src="https://lzh.qdzx.net.cn/static/2024/static/calendar_yearview_blocks.js"></script>
     <style>
         .calendar {
             width: fit-content;
@@ -34,7 +34,12 @@
     <div class="container">
         <h1>Motivational Box</h1>
         <hr>
-        <div id="main" class="container"></div>
+        <div class="container">
+            <ul class="nav nav-tabs" role="tablist" id="mainnav">
+            </ul>
+            <div class="tab-content" id="maincontent">
+            </div>
+        </div>
     </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="noteModal">
         <div class="modal-dialog" role="document">
@@ -57,17 +62,18 @@
 <script>
     let data = [];
     function repaint() {
-        let main = document.getElementById("main");
-        main.innerHTML = "";
+        let mainnav = document.getElementById("mainnav");
+        let maincontent = document.getElementById("maincontent");
+        mainnav.innerHTML = "";
+        maincontent.innerHTML = "";
         data.forEach(function (value, index) {
-            let now = document.createElement('h2');
-            now.innerText = value.name;
-            main.appendChild(now);
+            mainnav.innerHTML += '<li role="presentation"><a href="#tab'+index+'" aria-controls="tab'+index+'" role="tab" data-toggle="tab">'+value.name+'</a></li>';
 
-            now = document.createElement('div');
-            now.className = "calendar";
-            main.appendChild(now);
-
+            maincontent.innerHTML += '<div role="tabpanel" class="tab-pane" id="tab'+index+'"><div id="calendar'+index+'" class="calendar"></div></div>';
+        });
+        mainnav.children[0].classList += [" active"];
+        maincontent.children[0].classList += [" active"];
+        data.forEach(function (value, index) {
             let tmp = {};
             Object.keys(value.data).forEach(function (index2) {
                 let value2 = value.data[index2];
@@ -76,8 +82,7 @@
                     "color": value2.color ? value2.color : "green",
                 }
             })
-
-            $(now).calendar_yearview_blocks({
+            $("#calendar"+index).calendar_yearview_blocks({
                 cid: index,
                 data: tmp,
                 start_monday: true,
@@ -86,7 +91,7 @@
                     'default': '#eeeeee',
                 }
             });
-        });
+        })
     }
     $(document).ready(function () {
         $.get("./data.json", function (res) {
